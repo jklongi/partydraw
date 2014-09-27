@@ -3,13 +3,25 @@
 
     <string name="app_name">MORO</string>
     <string name="action_settings">Settings</string>
-	<string name="start_new">New</string>
-	<string name="brush">Brush</string>
-	<string name="erase">Erase</string>
-	<string name="save">Save</string>
-	<string name="paint">Paint</string>
-	<string name="sml">Small</string>
-	<string name="med">Medium</string>
-	<string name="lrg">Large</string>
+    <string name="start_new">New</string>
+    <string name="brush">Brush</string>
+    <string name="erase">Erase</string>
+    <string name="save">Save</string>
+    <string name="paint">Paint</string>
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
+    <string name="title_activity_main_activity">MainActivity</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="player_ammount">How many players?</string>
+    <string name="play_game">Play Game</string>
+    <string name="player_name1">Player1 Name</string>
+    <string name="player_name2">Player2 Name</string>
+    <string name="player_name3">Player3 Name</string>
+    <string name="player_name4">Player4 Name</string>
+    <string name="player_name5">Player5 Name</string>
+    <string name="player_name6">Player6 Name</string>
+    
 
 </resources>
