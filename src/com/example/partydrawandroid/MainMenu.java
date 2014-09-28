@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.codealarm.R;
+import com.example.partydrawandroid.R;
 
 
 public class MainMenu extends Activity  implements OnItemSelectedListener {
