@@ -1,6 +1,8 @@
 package com.example.partydrawandroid;
 
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.UUID;
 
@@ -8,12 +10,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +28,8 @@ public class DrawActivity extends Activity implements OnClickListener {
 	
 	private DrawView dv;
 	private float smallBrush, mediumBrush, largeBrush;
-	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
+	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn, loadBtn;
+	private String savedFileName;
 	
 	public void paintClicked(View view) {
 		
@@ -78,6 +80,9 @@ public class DrawActivity extends Activity implements OnClickListener {
         
         saveBtn = (ImageButton) findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
+        
+        loadBtn = (ImageButton) findViewById(R.id.load_btn);
+        loadBtn.setOnClickListener(this);
         
     }
 
@@ -222,6 +227,10 @@ public class DrawActivity extends Activity implements OnClickListener {
 			
 		}
 		
+		else if (view.getId() == R.id.load_btn) {
+			loadSavedImage();
+		}
+		
 	}
 	
 	public void saveImage() {
@@ -230,28 +239,46 @@ public class DrawActivity extends Activity implements OnClickListener {
 		dv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 		
 		Bitmap bmp = dv.getDrawingCache();
-		String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 		
-		ContextWrapper cw = new ContextWrapper(getApplicationContext());
-		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+		String filename = "partydraw_" + UUID.randomUUID().toString() + ".png";
+		File file = new File(getApplicationContext().getFilesDir(), filename);
 		
-		File file = new File(directory+"/partydraw_" + UUID.randomUUID().toString() + ".png");
 		FileOutputStream fos;
 		
 		try {
-			file.createNewFile();
-			fos = new FileOutputStream(file);
+			fos = openFileOutput(filename, Context.MODE_PRIVATE);
 			bmp.compress(CompressFormat.PNG, 100, fos);
 			
 			fos.flush();
 			fos.close();
 			
 			Toast.makeText(getApplicationContext(), "image saved", 5000).show();
+			
+			this.savedFileName = filename;
 		}
 		catch (Exception e) {
 			Toast.makeText(getApplicationContext(), "error", 5000).show();
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void loadSavedImage() {
+		
+		Bitmap b;
+		try {
+			FileInputStream fis = getApplicationContext().openFileInput(this.savedFileName);
+			//b = BitmapFactory.decodeResource(getResources(), R.id.drawing);
+			
+			b = BitmapFactory.decodeStream(fis);
+			fis.close();
+			
+			Bitmap mutable = b.copy(Bitmap.Config.ARGB_8888, true);
+			dv.loadSaved(mutable);
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
