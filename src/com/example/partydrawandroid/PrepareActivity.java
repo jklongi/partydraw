@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class PrepareActivity extends Activity {
 	
 	Button ready;
-	EditText playername;
+	TextView name;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,12 @@ public class PrepareActivity extends Activity {
 	    getActionBar().hide();
 		setContentView(R.layout.activity_prepare);
 		
+		Intent intent = getIntent();
+		String value = intent.getStringExtra("name");
+		
+		name = (TextView) findViewById(R.id.player_name);
+		name.setText(value);
+		
 		
 		ready = (Button) findViewById(R.id.readyButton);
 		
@@ -29,8 +36,9 @@ public class PrepareActivity extends Activity {
 	}
 	
 	public void startDraw(View view){
-		Intent intent = new Intent(this, DrawActivity.class);	
-    	startActivity(intent);
+		finish();
+		//Intent intent = new Intent(this, DrawActivity.class);	
+    	//startActivity(intent);
 	}
 
 	@Override

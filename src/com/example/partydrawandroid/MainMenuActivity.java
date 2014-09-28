@@ -136,9 +136,19 @@ public class MainMenuActivity extends Activity  implements OnItemSelectedListene
 		
 		players.setPlayers(playerlist);
 		
-		Intent intent = new Intent(this, PrepareActivity.class);	
-    	//intent.putExtra("players", players.getPlayers());
-    	startActivity(intent);
+		for(int i = 0; i < playerlist.size(); i++){
+			Intent intent = new Intent(MainMenuActivity.this, PrepareActivity.class);
+			intent.putExtra("name", playerlist.get(i).getName());
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+	    	startActivity(intent);
+	    	
+	    	intent = new Intent(MainMenuActivity.this, DrawActivity.class);
+	    	intent.putExtra("word", "Draw a Pen");
+	    	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+	    	startActivity(intent);
+		}
+		
 		
 	}
 

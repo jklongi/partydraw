@@ -211,6 +211,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 			    public void onClick(DialogInterface dialog, int which){
 			        //save drawing
 			    	saveImage();
+			    	finish();
 			    }
 			});
 			saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
