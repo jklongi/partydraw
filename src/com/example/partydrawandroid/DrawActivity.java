@@ -23,7 +23,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class DrawActivity extends Activity implements OnClickListener {
 	
 	private DrawView dv;
 	private float smallBrush, mediumBrush, largeBrush;

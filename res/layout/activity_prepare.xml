@@ -20,5 +20,4 @@
 	    android:text="@string/ready"
 	    android:onClick="startDraw" />
     
-
 </LinearLayout>
