@@ -130,8 +130,8 @@ public class MainMenu extends Activity  implements OnItemSelectedListener {
 			}
 		}
 		System.out.println(playerlist.toString());
-		Intent intent = new Intent(this, MainActivity.class);	
-    	intent.putExtra("players", players);
+		
+		Intent intent = new Intent(this, PrepareActivity.class);	
     	startActivity(intent);
 		
 	}

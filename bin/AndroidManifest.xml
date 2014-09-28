@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.partydrawandroid.MainMenu"
+            android:name=".MainMenu"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
@@ -23,9 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
-            android:name="com.example.partydrawandroid.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main_activity" >
+        </activity>
+        <activity
+            android:name=".PrepareActivity"
+            android:label="@string/title_activity_prepare" >
         </activity>
     </application>
 
