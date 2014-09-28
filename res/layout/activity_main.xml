@@ -40,6 +40,13 @@
 		    android:contentDescription="@string/save"
 		    android:src="@drawable/save" />
         
+        <ImageButton
+		    android:id="@+id/load_btn"
+		    android:layout_width="wrap_content"
+		    android:layout_height="fill_parent"
+		    android:contentDescription="@string/save"
+		    android:src="@drawable/save" />
+        
 	</LinearLayout>
 	
     <com.example.partydrawandroid.DrawView

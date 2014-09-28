@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -55,6 +56,16 @@ public class DrawView extends View {
 	    invalidate();
 	}
 	
+	public void loadSaved(Bitmap bmp) {
+		
+		invalidate();
+		canvasBitmap = bmp;
+		canvasPaint = new Paint(Paint.DITHER_FLAG);
+		drawCanvas = new Canvas();
+		drawCanvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
+		
+	}
+	
 	public void setBrushSize(float newSize) {
 		
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
@@ -84,7 +95,7 @@ public class DrawView extends View {
 	
 	public void setColor(String newColor) {
 		
-		invalidate();	
+		invalidate();
 		
 		paintColor = Color.parseColor(newColor);
 		drawPaint.setColor(paintColor);
