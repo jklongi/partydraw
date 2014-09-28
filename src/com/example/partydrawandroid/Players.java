@@ -2,11 +2,11 @@ package com.example.partydrawandroid;
 
 import java.util.ArrayList;
 
-public class Controller {
+public class Players {
 	
 	private ArrayList<Player> players;
 	
-	public Controller(){
+	public Players(){
 		this.setPlayers(new ArrayList<Player>());
 	}
 
@@ -16,6 +16,7 @@ public class Controller {
 
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
-	}	
+	}
+	
 
 }

@@ -1,25 +1,29 @@
 package com.example.partydrawandroid;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.UUID;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import java.util.UUID;
-
-import com.example.partydrawandroid.R;
-
-import android.provider.MediaStore;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class DrawActivity extends Activity implements OnClickListener {
 	
 	private DrawView dv;
 	private float smallBrush, mediumBrush, largeBrush;
@@ -206,6 +210,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			    public void onClick(DialogInterface dialog, int which){
 			        //save drawing
+			    	saveImage();
 			    }
 			});
 			saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
@@ -215,6 +220,37 @@ public class MainActivity extends Activity implements OnClickListener {
 			});
 			saveDialog.show();
 			
+		}
+		
+	}
+	
+	public void saveImage() {
+		
+		dv.setDrawingCacheEnabled(true);
+		dv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+		
+		Bitmap bmp = dv.getDrawingCache();
+		String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+		
+		ContextWrapper cw = new ContextWrapper(getApplicationContext());
+		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+		
+		File file = new File(directory+"/partydraw_" + UUID.randomUUID().toString() + ".png");
+		FileOutputStream fos;
+		
+		try {
+			file.createNewFile();
+			fos = new FileOutputStream(file);
+			bmp.compress(CompressFormat.PNG, 100, fos);
+			
+			fos.flush();
+			fos.close();
+			
+			Toast.makeText(getApplicationContext(), "image saved", 5000).show();
+		}
+		catch (Exception e) {
+			Toast.makeText(getApplicationContext(), "error", 5000).show();
+			e.printStackTrace();
 		}
 		
 	}

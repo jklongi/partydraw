@@ -29,7 +29,7 @@ public class PrepareActivity extends Activity {
 	}
 	
 	public void startDraw(View view){
-		Intent intent = new Intent(this, MainActivity.class);	
+		Intent intent = new Intent(this, DrawActivity.class);	
     	startActivity(intent);
 	}
 

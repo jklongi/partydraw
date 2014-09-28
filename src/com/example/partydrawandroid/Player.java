@@ -8,7 +8,7 @@ public class Player {
 	
 	public Player(String name){
 		this.setName(name);
-		this.setPoints(0);	
+		this.points = 0;	
 	}
 
 	public String getName() {
@@ -23,8 +23,9 @@ public class Player {
 		return points;
 	}
 
-	public void setPoints(int points) {
-		this.points = points;
+	public void addPoints(int points) {
+		if (points > 0)
+			this.points += points;
 	}
 
 	public int getGuess() {
