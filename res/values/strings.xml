@@ -22,6 +22,8 @@
     <string name="player_name4">Player4 Name</string>
     <string name="player_name5">Player5 Name</string>
     <string name="player_name6">Player6 Name</string>
-    
+    <string name="title_activity_prepare">PrepareActivity</string>
+    <string name="prepare">Prepare to draw!</string>
+    <string name="ready">Ready!</string>
 
 </resources>
