@@ -26,6 +26,7 @@ public class MainMenuActivity extends Activity  implements OnItemSelectedListene
 	private Spinner spinner;
     private static final String[]paths = {"Three", "Four", "Five", "Six"};
     private int playerAmmount;
+    private int request;
     EditText player1;
     EditText player2;
     EditText player3;
@@ -116,6 +117,8 @@ public class MainMenuActivity extends Activity  implements OnItemSelectedListene
     }
 	
 	public void playGame(View view){
+		request = 0;
+		
 		ArrayList<Player> playerlist = new ArrayList<Player>();
 		String[] playerNames = {
     			player1.getText().toString(),
@@ -136,20 +139,33 @@ public class MainMenuActivity extends Activity  implements OnItemSelectedListene
 		
 		players.setPlayers(playerlist);
 		
-		for(int i = 0; i < playerlist.size(); i++){
-			Intent intent = new Intent(MainMenuActivity.this, PrepareActivity.class);
-			intent.putExtra("name", playerlist.get(i).getName());
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-	    	startActivity(intent);
-	    	
-	    	intent = new Intent(MainMenuActivity.this, DrawActivity.class);
-	    	intent.putExtra("word", "Draw a Pen");
-	    	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-	    	startActivity(intent);
-		}
+		Intent intent = new Intent(MainMenuActivity.this, DrawActivity.class);
+		intent.putExtra("name", playerlist.get(0).getName());
+		startActivityForResult(intent, request);
+		
+	
+		//Intent guess = new Intent(this, GuessPictureActivity.class);
+		//startActivity(guess);
 		
 		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == request) {
+	    	request++;
+	    	System.out.println(playerAmmount);
+	    	System.out.println(request);
+	    	if(request < playerAmmount){
+	    		Intent intent = new Intent(MainMenuActivity.this, DrawActivity.class);
+				intent.putExtra("name", players.getPlayers().get(request).getName());
+				startActivityForResult(intent, request);
+	    	} else if(request < playerAmmount * 2){
+	    		Intent intent = new Intent(MainMenuActivity.this, GuessPictureActivity.class);
+				intent.putExtra("name", players.getPlayers().get(request-playerAmmount).getName());
+				startActivityForResult(intent, request);
+	    	}
+	    }
 	}
 
 	@Override

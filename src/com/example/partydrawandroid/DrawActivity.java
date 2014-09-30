@@ -1,7 +1,6 @@
 package com.example.partydrawandroid;
 
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.UUID;
@@ -11,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
@@ -57,7 +57,25 @@ public class DrawActivity extends Activity implements OnClickListener {
 	    getActionBar().hide();
         setContentView(R.layout.activity_main);
         
-        dv = (DrawView) findViewById(R.id.drawing);
+        
+        Intent intent = getIntent();
+		String name = intent.getStringExtra("name");
+		
+        new AlertDialog.Builder(this)
+        .setTitle("Draw")
+        .setMessage(name + " are you ready to draw?")
+        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) { 
+                playerIsReady();
+            }
+         })
+        .setIcon(android.R.drawable.ic_dialog_alert)
+         .show();
+    }
+    
+    public void playerIsReady(){
+    	
+    	dv = (DrawView) findViewById(R.id.drawing);
         dv.setBrushSize(mediumBrush);
         
         LinearLayout paintLayout = (LinearLayout) findViewById(R.id.paint_colors);
@@ -83,7 +101,6 @@ public class DrawActivity extends Activity implements OnClickListener {
         
         loadBtn = (ImageButton) findViewById(R.id.load_btn);
         loadBtn.setOnClickListener(this);
-        
     }
 
 

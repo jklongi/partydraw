@@ -1,54 +1,52 @@
 package com.example.partydrawandroid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class PrepareActivity extends Activity {
-	
-	Button ready;
-	TextView name;
+public class GuessPictureActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-	    getActionBar().hide();
-		setContentView(R.layout.activity_prepare);
-		
+		setContentView(R.layout.activity_guess_picture);
 		Intent intent = getIntent();
-		String value = intent.getStringExtra("name");
+		String name = intent.getStringExtra("name");
 		
-		name = (TextView) findViewById(R.id.player_name);
-		name.setText(value);
+		new AlertDialog.Builder(this)
+        .setTitle("Guess picture")
+        .setMessage(name + " guess picture")
+        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) { 
+                playerGuess();
+            }
+         })
+        .setIcon(android.R.drawable.ic_dialog_alert)
+         .show();
 		
 		
-		ready = (Button) findViewById(R.id.readyButton);
-		
-		
+
 	}
 	
-	public void startDraw(View view){
-		//finish();
-		Intent intent = new Intent(this, DrawActivity.class);
-    	intent.putExtra("word", "Draw a Pen");
-    	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    	startActivity(intent);
-    	finish();
-
+	public void playerGuess(){
+		//Tänne koodia kuvien näyttämiseen
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.prepare, menu);
+		getMenuInflater().inflate(R.menu.guess_picture, menu);
 		return true;
+	}
+	
+	public void guessDone(View view){
+		finish();
 	}
 
 	@Override
