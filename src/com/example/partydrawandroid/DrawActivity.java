@@ -2,6 +2,7 @@ package com.example.partydrawandroid;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.UUID;
 
@@ -9,10 +10,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,16 +23,17 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DrawActivity extends Activity implements OnClickListener {
 	
 	private DrawView dv;
 	private float smallBrush, mediumBrush, largeBrush;
 	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn, loadBtn;
-	private String savedFileName;
+	private String filePath;
+	private int index;
 	
 	public void paintClicked(View view) {
 		
@@ -63,6 +65,7 @@ public class DrawActivity extends Activity implements OnClickListener {
         
         Intent intent = getIntent();
 		String name = intent.getStringExtra("name");
+		index = intent.getIntExtra("index", 0);
 		
         new AlertDialog.Builder(this)
         .setTitle("Draw")
@@ -266,47 +269,35 @@ public class DrawActivity extends Activity implements OnClickListener {
 		dv.setDrawingCacheEnabled(true);
 		dv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 		
-		Bitmap bmp = dv.getDrawingCache();
+		Bitmap bitmapImage = dv.getDrawingCache();
 		
-		String filename = "partydraw_" + UUID.randomUUID().toString() + ".png";
-		File file = new File(getApplicationContext().getFilesDir(), filename);
-		
-		FileOutputStream fos;
-		
-		try {
-			fos = openFileOutput(filename, Context.MODE_PRIVATE);
-			bmp.compress(CompressFormat.PNG, 100, fos);
-			
-			fos.flush();
-			fos.close();
-			
-			Toast.makeText(getApplicationContext(), "image saved", 5000).show();
-			
-			this.savedFileName = filename;
-		}
-		catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "error", 5000).show();
-			e.printStackTrace();
-		}
+		ContextWrapper cw = new ContextWrapper(getApplicationContext());
+	    File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+	    File mypath = new File(directory,"player" + index +".jpg");
+	
+	    FileOutputStream fos = null;
+	    try {           
+	    	fos = new FileOutputStream(mypath);
+	        bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+	        fos.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    filePath = directory.getAbsolutePath();
 		
 	}
 	
 	public void loadSavedImage() {
 		
-		Bitmap b;
 		try {
-			FileInputStream fis = getApplicationContext().openFileInput(this.savedFileName);
-			//b = BitmapFactory.decodeResource(getResources(), R.id.drawing);
-			
-			b = BitmapFactory.decodeStream(fis);
-			fis.close();
-			
-			Bitmap mutable = b.copy(Bitmap.Config.ARGB_8888, true);
-			dv.loadSaved(mutable);
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+	        File f=new File(filePath, "player0.jpg");
+	        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+	        ImageView img=(ImageView)findViewById(R.id.drawing);
+	        img.setImageBitmap(b);
+	    } 
+	    catch (FileNotFoundException e) 
+	    {
+	        e.printStackTrace();
+	    }
 	}
 }

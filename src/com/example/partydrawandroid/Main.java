@@ -115,6 +115,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	    	if(request < playerAmmount){
 	    		Intent intent = new Intent(getActivity(), DrawActivity.class);
 				intent.putExtra("name", players.getPlayers().get(request).getName());
+				intent.putExtra("index", request);
 				if(request == answer){
 					intent.putExtra("word", guess[0]);
 				} else {
@@ -125,8 +126,14 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	    	} else if(request < playerAmmount * 2){
 	    		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
 				intent.putExtra("name", players.getPlayers().get(request-playerAmmount).getName());
+				intent.putExtra("index", request-playerAmmount);
+				intent.putExtra("playerAmmount", playerAmmount);
 				request++;
 				startActivityForResult(intent, request);
+	    	} else {
+	    		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
+				intent.putExtra("index", answer);
+				startActivity(intent);
 	    	}
 	    }
 	}

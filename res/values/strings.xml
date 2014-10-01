@@ -28,5 +28,8 @@
     <string name="title_activity_guess_picture">GuessPictureActivity</string>
     <string name="guess_picture">Guess Picture</string>
     <string name="guess_done">Done</string>
+    <string name="description">Image description</string>
+    <string name="title_activity_correct_answer">CorrectAnswerActivity</string>
+    <string name="answer">The correct answer was!</string>
 
 </resources>
