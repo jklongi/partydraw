@@ -12,6 +12,9 @@ public class Guide extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		View guide = inflater.inflate(R.layout.guide_frag, container, false);
         ((TextView)guide.findViewById(R.id.textView)).setText("How to Play?");
+        ((TextView)guide.findViewById(R.id.guide)).setText(
+        		"Each player gets the same word to draw except one player gets word similiar to the others. " +
+        		"Each player then has to guess which picture had different word. ");
         return guide;
 	}
 }

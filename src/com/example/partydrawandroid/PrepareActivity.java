@@ -1,11 +1,9 @@
 package com.example.partydrawandroid;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,18 +20,6 @@ public class PrepareActivity extends Activity {
 	    getActionBar().hide();
 		setContentView(R.layout.activity_prepare);
 		finish();
-		
-		
-	}
-	
-	public void startDraw(View view){
-		//finish();
-		Intent intent = new Intent(this, DrawActivity.class);
-    	intent.putExtra("word", "Draw a Pen");
-    	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-    	startActivity(intent);
-    	finish();
-
 	}
 
 	@Override

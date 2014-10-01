@@ -14,7 +14,6 @@ public class WordPair {
 		add("Dog","Cat");
 		add("Cow","Bull");
 		add("Stick","Cane");
-		add("Jason Mraz","Some guy with hat");
 		
 	}
 	
