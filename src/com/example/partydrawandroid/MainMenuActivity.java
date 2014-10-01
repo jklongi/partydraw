@@ -56,7 +56,7 @@ public class MainMenuActivity extends FragmentActivity {
 		};
       
 	    actionBar.addTab(actionBar.newTab().setText("Play").setTabListener(tabListener));
-	    actionBar.addTab(actionBar.newTab().setText("Highscores").setTabListener(tabListener));
+	    actionBar.addTab(actionBar.newTab().setText("Scores").setTabListener(tabListener));
 	    actionBar.addTab(actionBar.newTab().setText("How to Play?").setTabListener(tabListener));
 	}
 	

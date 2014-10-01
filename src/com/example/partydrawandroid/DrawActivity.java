@@ -18,11 +18,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DrawActivity extends Activity implements OnClickListener {
@@ -72,10 +73,17 @@ public class DrawActivity extends Activity implements OnClickListener {
             }
          })
         .setIcon(android.R.drawable.ic_dialog_alert)
-         .show();
+        .show();
     }
     
     public void playerIsReady(){
+    	
+    	Intent intent = getIntent();
+		String word = intent.getStringExtra("word");
+		
+		TextView drawword = (TextView) findViewById(R.id.word);
+		drawword.setText("Draw '" + word + "'");
+		
     	
     	dv = (DrawView) findViewById(R.id.drawing);
         dv.setBrushSize(mediumBrush);
@@ -229,8 +237,8 @@ public class DrawActivity extends Activity implements OnClickListener {
 		else if (view.getId() == R.id.save_btn) {
 			
 			AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-			saveDialog.setTitle("Save drawing");
-			saveDialog.setMessage("Save drawing to device Gallery?");
+			saveDialog.setTitle("Finished");
+			saveDialog.setMessage("Done drawing?");
 			saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			    public void onClick(DialogInterface dialog, int which){
 			        //save drawing

@@ -2,6 +2,7 @@ package com.example.partydrawandroid;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,8 @@ public class Main extends Fragment implements OnItemSelectedListener {
     private int playerAmmount;
     private int request;
     private EditText player1, player2, player3, player4, player5,player6;
+    private String[] guess;
+    private int answer;
     Button b1;
     Fragment fragment = this;
     
@@ -67,9 +70,34 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	
 	public void playGame(View view){
 		request = 0;
+		WordPair pair = new WordPair();
+		guess = pair.getPair();
 		
+		Random random = new Random();
+		answer = random.nextInt(playerAmmount);
+		System.out.println(answer);
 		
 		ArrayList<Player> playerlist = new ArrayList<Player>();
+		String[] playerNames = playersToArray();		
+		playerNamesToArray(playerlist, playerNames);		
+		players.setPlayers(playerlist);
+		
+		Intent intent = new Intent(getActivity(), PrepareActivity.class);
+		fragment.startActivityForResult(intent, request);
+		
+	}
+
+	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
+		for(int i = 0; i < playerAmmount; i++){
+			if(playerNames[i].trim().length() != 0){
+				playerlist.add(new Player(playerNames[i]));
+			} else{
+				playerlist.add(new Player("Player" + (i+1) ));
+			}
+		}
+	}
+
+	private String[] playersToArray() {
 		String[] playerNames = {
     			player1.getText().toString(),
     			player2.getText().toString(),
@@ -78,37 +106,26 @@ public class Main extends Fragment implements OnItemSelectedListener {
     			player5.getText().toString(),
     			player6.getText().toString()
     	};
-		
-    	
-		for(int i = 0; i < playerAmmount; i++){
-			if(playerNames[i].trim().length() != 0){
-				playerlist.add(new Player(playerNames[i]));
-			} else{
-				playerlist.add(new Player("Player" + (i+1) ));
-			}
-		}
-		
-		
-		
-		players.setPlayers(playerlist);
-		
-		Intent intent = new Intent(getActivity(), DrawActivity.class);
-		intent.putExtra("name", playerlist.get(0).getName());
-		fragment.startActivityForResult(intent, request);
-		
+		return playerNames;
 	}
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == request) {
-	    	request++;
 	    	if(request < playerAmmount){
 	    		Intent intent = new Intent(getActivity(), DrawActivity.class);
 				intent.putExtra("name", players.getPlayers().get(request).getName());
+				if(request == answer){
+					intent.putExtra("word", guess[0]);
+				} else {
+					intent.putExtra("word", guess[1]);
+				}
+				request++;
 				startActivityForResult(intent, request);
 	    	} else if(request < playerAmmount * 2){
 	    		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
 				intent.putExtra("name", players.getPlayers().get(request-playerAmmount).getName());
+				request++;
 				startActivityForResult(intent, request);
 	    	}
 	    }

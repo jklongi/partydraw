@@ -21,15 +21,7 @@ public class PrepareActivity extends Activity {
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 	    getActionBar().hide();
 		setContentView(R.layout.activity_prepare);
-		
-		Intent intent = getIntent();
-		String value = intent.getStringExtra("name");
-		
-		name = (TextView) findViewById(R.id.player_name);
-		name.setText(value);
-		
-		
-		ready = (Button) findViewById(R.id.readyButton);
+		finish();
 		
 		
 	}
