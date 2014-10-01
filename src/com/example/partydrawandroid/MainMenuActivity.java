@@ -39,9 +39,7 @@ public class MainMenuActivity extends FragmentActivity {
 	        Tab.setAdapter(TabAdapter);
 	        actionBar = getActionBar();
 	        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-	        actionBar.setDisplayShowTitleEnabled(false);
-	        actionBar.setDisplayShowHomeEnabled(false);
-	        actionBar.setDisplayHomeAsUpEnabled(false);
+	        //actionBar.setDisplayShowTitleEnabled(false);
 	        ActionBar.TabListener tabListener = new ActionBar.TabListener(){
 	        	@Override
 	        	public void onTabReselected(android.app.ActionBar.Tab tab,
@@ -57,9 +55,9 @@ public class MainMenuActivity extends FragmentActivity {
 			}
 		};
       
-	    actionBar.addTab(actionBar.newTab().setText("Main").setTabListener(tabListener));
-	    actionBar.addTab(actionBar.newTab().setText("Scores").setTabListener(tabListener));
-	    actionBar.addTab(actionBar.newTab().setText("Guide").setTabListener(tabListener));
+	    actionBar.addTab(actionBar.newTab().setText("Play").setTabListener(tabListener));
+	    actionBar.addTab(actionBar.newTab().setText("Highscores").setTabListener(tabListener));
+	    actionBar.addTab(actionBar.newTab().setText("How to Play?").setTabListener(tabListener));
 	}
 	
 	@Override

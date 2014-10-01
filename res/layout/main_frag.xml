@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     tools:context=".Main" 
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp"
+    android:background="#e2f0b6" >
 
 
         
