@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context=".Main" 
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+
+        
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/player1" 
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/play_game"
+            android:layout_below="@id/spinner" />
+
+        <EditText
+            android:id="@+id/player1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name1"
+            android:layout_alignParentRight="true" />
+
+        <EditText
+            android:id="@+id/player2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name2"
+            android:layout_below="@id/player1"
+            android:layout_alignParentRight="true"  />
+
+        <EditText
+            android:id="@+id/player3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name3"
+            android:layout_below="@id/player2"
+            android:layout_alignParentRight="true"  />
+
+        <EditText
+            android:id="@+id/player4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name4"
+            android:layout_below="@id/player3"
+            android:layout_alignParentRight="true"  />
+
+        <EditText
+            android:id="@+id/player5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name5"
+            android:layout_below="@id/player4" 
+            android:layout_alignParentRight="true" />
+
+        <EditText
+            android:id="@+id/player6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/player_name6"
+            android:layout_below="@id/player5"
+            android:layout_alignParentRight="true"  />
+
+
+</RelativeLayout>

@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,66 +10,5 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.partydrawandroid.MainMenuActivity" >
-
-	<LinearLayout android:layout_width="0dp" 
-		android:layout_height="fill_parent" 
-    	android:layout_weight="1"
-    	android:orientation="vertical" >
-
-	    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_ammount" />
-
-    	<Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     
-    	<Button android:id="@+id/startButton"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/play_game"
-	    android:onClick="playGame" />
-    	
-	</LinearLayout>
-	
-	<LinearLayout
-	    android:layout_width="0dp"
-	    android:layout_height="fill_parent" 
-     	android:layout_weight="1"
-     	android:orientation="vertical">
-    
-	 <EditText android:id="@+id/player1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name1" />
-    
-    <EditText android:id="@+id/player2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name2" />
-    
-    <EditText android:id="@+id/player3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name3" />
-    
-    <EditText android:id="@+id/player4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name4" />
-    
-    <EditText android:id="@+id/player5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name5" />
-    
-    <EditText android:id="@+id/player6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/player_name6" />
-	</LinearLayout>
-    
-
 </LinearLayout>
