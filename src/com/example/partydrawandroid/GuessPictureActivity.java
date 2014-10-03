@@ -19,11 +19,22 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class GuessPictureActivity extends Activity {
 	
 	private int index;
 	private int playerAmmount;
+	private ImageView view1;
+	private ImageView view2;
+	private ImageView view3;
+	private ImageView view4;
+	private ImageView view5;
+	private ImageView view6;
+	
+	LinearLayout layout4;
+	LinearLayout layout5;
+	LinearLayout layout6;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,33 @@ public class GuessPictureActivity extends Activity {
 		String name = intent.getStringExtra("name");
 		index = intent.getIntExtra("index", 0);
 		playerAmmount = intent.getIntExtra("playerAmmount", 0);
+		
+		view1 = (ImageView)findViewById(R.id.imageView1);
+		view2 = (ImageView)findViewById(R.id.imageView2);
+		view3 = (ImageView)findViewById(R.id.imageView3);
+		view4 = (ImageView)findViewById(R.id.imageView4);
+		view5 = (ImageView)findViewById(R.id.imageView5);
+		view6 = (ImageView)findViewById(R.id.imageView6);
+		
+		layout4 = (LinearLayout)findViewById(R.id.layoutView4);
+		layout5 = (LinearLayout)findViewById(R.id.layoutView5);
+		layout6 = (LinearLayout)findViewById(R.id.layoutView6);
+		
+		layout4.setVisibility(View.GONE);
+		layout5.setVisibility(View.GONE);
+		layout6.setVisibility(View.GONE);
+		
+		view1.setVisibility(View.GONE);
+		view2.setVisibility(View.GONE);
+		view3.setVisibility(View.GONE);
+		view4.setVisibility(View.GONE);
+		view5.setVisibility(View.GONE);
+		view6.setVisibility(View.GONE);
+		
+		
+		
+		
+		
 		
 		new AlertDialog.Builder(this)
         .setTitle("Guess picture")
@@ -61,17 +99,27 @@ public class GuessPictureActivity extends Activity {
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
 		        ImageView img;
 		        if(i == 0){
-		        	img=(ImageView)findViewById(R.id.imageView1);
+		        	view1.setVisibility(View.VISIBLE);
+		        	img=view1;
 		        } else if(i == 1){
-		        	img=(ImageView)findViewById(R.id.imageView2);
+		        	view2.setVisibility(View.VISIBLE);
+		        	img=view2;
 		        } else if(i == 2){
-		        	img=(ImageView)findViewById(R.id.imageView3);
+		        	view3.setVisibility(View.VISIBLE);
+		        	img=view3;
 		        } else if(i == 3){
-		        	img=(ImageView)findViewById(R.id.imageView4);
+		        	layout4.setVisibility(View.VISIBLE);
+		        	view4.setVisibility(View.VISIBLE);
+		        	img=view4;
 		        } else if(i == 4){
-		        	img=(ImageView)findViewById(R.id.imageView5);
+		        	layout5.setVisibility(View.VISIBLE);
+		        	view5.setVisibility(View.VISIBLE);
+		        	img=view5;
 		        } else {
-		        	img=(ImageView)findViewById(R.id.imageView6);
+		        	
+		        	layout6.setVisibility(View.VISIBLE);
+		        	view6.setVisibility(View.VISIBLE);
+		        	img=view6;
 		        }
 		        
 		        img.setImageBitmap(b);

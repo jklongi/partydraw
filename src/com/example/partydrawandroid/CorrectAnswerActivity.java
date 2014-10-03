@@ -17,10 +17,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class CorrectAnswerActivity extends Activity {
 	
 	private int index;
+	private String name;
+	private String word;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,11 @@ public class CorrectAnswerActivity extends Activity {
 		setContentView(R.layout.activity_correct_answer);
 		Intent intent = getIntent();
 		index = intent.getIntExtra("index", 0);
+		name = intent.getStringExtra("player");
+		word = intent.getStringExtra("word");
+		
+		TextView view = (TextView)findViewById(R.id.correctTextView);
+		view.setText("Correct Answer was " + "'" + word + "'" + " by " + name + "!");
 		
 		ContextWrapper cw = new ContextWrapper(getApplicationContext());
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);

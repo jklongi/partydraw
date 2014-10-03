@@ -23,7 +23,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	
 	private Players players;
 	private Spinner spinner;
-    private static final String[]options = {"Three players", "Four players", "Five players", "Six players"};
+    private static final String[]options = {"3 players", "4 players", "5 players", "6 players"};
     private int playerAmmount;
     private int request;
     private EditText player1, player2, player3, player4, player5,player6;
@@ -133,6 +133,8 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	    	} else {
 	    		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
 				intent.putExtra("index", answer);
+				intent.putExtra("word", guess[0]);
+				intent.putExtra("player", players.getPlayers().get(answer).getName());
 				startActivity(intent);
 	    	}
 	    }

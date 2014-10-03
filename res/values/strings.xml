@@ -16,6 +16,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="player_ammount">How many players?</string>
     <string name="play_game">Play Game</string>
+    <string name="player_name">Player Name</string>
     <string name="player_name1">Player1 Name</string>
     <string name="player_name2">Player2 Name</string>
     <string name="player_name3">Player3 Name</string>

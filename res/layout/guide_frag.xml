@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#ffcccc"
+    android:background="@drawable/background"
     android:paddingLeft="16dp"
     android:paddingRight="16dp" >
     
@@ -12,12 +12,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:textColor="#54dceb"/>
     
     <TextView
         android:id="@+id/guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"/>
     
 </LinearLayout>

@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#ffecc2" >
+    android:background="@drawable/background" >
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:textColor="#54dceb"/>
 </LinearLayout>

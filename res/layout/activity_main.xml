@@ -2,15 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFCCCCCC"
     android:orientation="vertical"
-    tools:context=".DrawActivity" >
+    tools:context=".DrawActivity"
+    android:background="#FFFFFF" >
  	
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:paddingLeft="16dp" >
+        android:paddingLeft="16dp"
+        android:background="#4033B5E5" >
 	    
         <ImageButton
 		    android:id="@+id/new_btn"
@@ -43,15 +44,8 @@
 		    android:layout_height="fill_parent"
 		    android:contentDescription="@string/save"
 		    android:src="@drawable/save"
-		    android:layout_toLeftOf="@+id/load_btn" />
+		    android:layout_alignParentRight="true" />
         
-        <ImageButton
-		    android:id="@+id/load_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="fill_parent"
-		    android:contentDescription="@string/save"
-		    android:src="@drawable/save" 
-		    android:layout_alignParentRight="true"/>
 
         <TextView
             android:id="@+id/word"

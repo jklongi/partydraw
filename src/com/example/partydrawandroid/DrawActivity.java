@@ -31,7 +31,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 	
 	private DrawView dv;
 	private float smallBrush, mediumBrush, largeBrush;
-	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn, loadBtn;
+	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
 	private String filePath;
 	private int index;
 	
@@ -112,8 +112,6 @@ public class DrawActivity extends Activity implements OnClickListener {
         saveBtn = (ImageButton) findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(this);
         
-        loadBtn = (ImageButton) findViewById(R.id.load_btn);
-        loadBtn.setOnClickListener(this);
     }
 
 
@@ -258,9 +256,6 @@ public class DrawActivity extends Activity implements OnClickListener {
 			
 		}
 		
-		else if (view.getId() == R.id.load_btn) {
-			loadSavedImage();
-		}
 		
 	}
 	
