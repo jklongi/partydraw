@@ -4,14 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DrawActivity"
-    android:background="#FFFFFF" >
+    android:background="@drawable/background"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
  	
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:background="#4033B5E5" >
+        android:paddingLeft="16dp" >
 	    
         <ImageButton
 		    android:id="@+id/new_btn"
@@ -53,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#54dceb" />
         
 	</RelativeLayout>
 	
@@ -66,7 +68,7 @@
 	    android:layout_marginRight="5dp"
 	    android:layout_marginTop="3dp"
 	    android:layout_weight="1"
-	    android:background="#FFFFFFFF" />
+	    android:background="#CCFFFFFF" />
     
     <LinearLayout
         android:layout_width="wrap_content"

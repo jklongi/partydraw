@@ -4,7 +4,7 @@
     android:layout_height="match_parent" 
 	android:layout_width="match_parent"
 	android:orientation="vertical"
-	android:background="#4033B5E5"  
+	android:background="@drawable/background"  
 	android:padding="8dp"
 	android:gravity="center" >
 	
@@ -31,7 +31,8 @@
 	            android:layout_height="match_parent"
 	            android:contentDescription="@string/description"
 	            android:onClick="guessPicture1"
-	            android:scaleType="centerCrop" />
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	
 	    <LinearLayout
@@ -49,7 +50,8 @@
 	            android:layout_height="match_parent"
 	            android:contentDescription="@string/description"
 	            android:onClick="guessPicture3"
-	            android:scaleType="centerCrop" />
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	    
 	    <LinearLayout
@@ -67,7 +69,8 @@
 	            android:layout_height="match_parent"
 	            android:contentDescription="@string/description"
 	            android:onClick="guessPicture5"
-	            android:scaleType="centerCrop" />
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	</LinearLayout>
 	
@@ -76,16 +79,16 @@
 	    android:layout_height="match_parent"
 	    android:layout_weight="1"
 	    android:baselineAligned="false"
-	    android:orientation="horizontal" >
+	    android:orientation="horizontal"
+	    tools:ignore="NestedWeights" >
 	
 	    <LinearLayout
 	        android:id="@+id/layoutView2"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
-	        android:orientation="vertical"
 	        android:padding="2dp"
-	        tools:ignore="NestedWeights" >
+	        android:orientation="vertical" >
 	
 	        <ImageButton
 	            style="?android:borderlessButtonStyle"
@@ -93,8 +96,10 @@
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
 	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture4"
-	            android:scaleType="centerCrop" />
+	            android:onClick="guessPicture2"
+	            android:padding="2dp"
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	
 	    <LinearLayout
@@ -113,7 +118,8 @@
 	            android:contentDescription="@string/description"
 	            android:onClick="guessPicture5"
 	            android:padding="2dp"
-	            android:scaleType="centerCrop" />
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	    
 	    <LinearLayout
@@ -131,7 +137,8 @@
 	            android:layout_height="match_parent"
 	            android:contentDescription="@string/description"
 	            android:onClick="guessPicture6"
-	            android:scaleType="centerCrop" />
+	            android:scaleType="centerCrop"
+	            android:background="#CCFFFFFF" />
 	    </LinearLayout>
 	    
 	</LinearLayout>

@@ -27,7 +27,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
     private int playerAmmount;
     private int request;
     private EditText player1, player2, player3, player4, player5,player6;
-    private String[] guess;
+    private String[] wordPair;
     private int answer;
     Button b1;
     Fragment fragment = this;
@@ -36,26 +36,10 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View main = inflater.inflate(R.layout.main_frag, container, false);
-		
-		spinner = (Spinner)main.findViewById(R.id.spinner);
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, options);
-        
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-        
-        players = new Players();
-		
-		player1 = (EditText) main.findViewById(R.id.player1);   
-        player2 = (EditText) main.findViewById(R.id.player2);
-        player3 = (EditText) main.findViewById(R.id.player3); 
-        player4 = (EditText) main.findViewById(R.id.player4);  
-        player5 = (EditText) main.findViewById(R.id.player5);
-        player6 = (EditText) main.findViewById(R.id.player6);
-        
-        player4.setVisibility(View.GONE);
-        player5.setVisibility(View.GONE);
-        player6.setVisibility(View.GONE);
+		players = new Players();	
+		createSpinner(main);
+		getEditTextFields(main);
+        setVisibility();
         
         b1 = (Button) main.findViewById(R.id.startButton);
         b1.setOnClickListener(new OnClickListener() {
@@ -67,24 +51,49 @@ public class Main extends Fragment implements OnItemSelectedListener {
 		
         return main;
 	}
+
+	private void createSpinner(View main) {
+		spinner = (Spinner)main.findViewById(R.id.spinner);
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, options);
+        
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+	}
+
+	private void setVisibility() {
+		player4.setVisibility(View.GONE);
+        player5.setVisibility(View.GONE);
+        player6.setVisibility(View.GONE);
+	}
+
+	private void getEditTextFields(View main) {
+		player1 = (EditText) main.findViewById(R.id.player1);   
+        player2 = (EditText) main.findViewById(R.id.player2);
+        player3 = (EditText) main.findViewById(R.id.player3); 
+        player4 = (EditText) main.findViewById(R.id.player4);  
+        player5 = (EditText) main.findViewById(R.id.player5);
+        player6 = (EditText) main.findViewById(R.id.player6);
+	}
 	
 	public void playGame(View view){
 		request = 0;
 		WordPair pair = new WordPair();
-		guess = pair.getPair();
-		
+		wordPair = pair.getPair();	
 		Random random = new Random();
-		answer = random.nextInt(playerAmmount);
-		System.out.println(answer);
-		
-		ArrayList<Player> playerlist = new ArrayList<Player>();
-		String[] playerNames = playersToArray();		
-		playerNamesToArray(playerlist, playerNames);		
-		players.setPlayers(playerlist);
+		answer = random.nextInt(playerAmmount);		
+		setPlayerList();
 		
 		Intent intent = new Intent(getActivity(), PrepareActivity.class);
 		fragment.startActivityForResult(intent, request);
 		
+	}
+
+	private void setPlayerList() {
+		ArrayList<Player> playerlist = new ArrayList<Player>();
+		String[] playerNames = playersToArray();		
+		playerNamesToArray(playerlist, playerNames);		
+		players.setPlayers(playerlist);
 	}
 
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
@@ -113,44 +122,53 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == request) {
 	    	if(request < playerAmmount){
-	    		Intent intent = new Intent(getActivity(), DrawActivity.class);
-				intent.putExtra("player", players.getPlayers().get(request));
-				intent.putExtra("index", request);
-				if(request == answer){
-					intent.putExtra("word", guess[0]);
-				} else {
-					intent.putExtra("word", guess[1]);
-				}
-				request++;
-				startActivityForResult(intent, request);
+	    		startDrawActivity();
 	    	} else if(request < playerAmmount * 2){
-	    		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
-				intent.putExtra("player", players.getPlayers().get(request-playerAmmount));
-				intent.putExtra("playerAmmount", playerAmmount);
-				request++;
-				startActivityForResult(intent, request);
+	    		startGuessPictureActivity();
 	    	} else {
-	    		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
-	    		intent.putExtra("player", players.getPlayers().get(answer));
-				intent.putExtra("index", answer);
-				intent.putExtra("word", guess[0]);
-				startActivity(intent);
+	    		startCorrectAnswerActivity();
 	    	}
 	    }
 	}
-	
-	
-	
 
+	private void startCorrectAnswerActivity() {
+		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
+		intent.putExtra("player", players.getPlayers().get(answer));
+		intent.putExtra("index", answer);
+		intent.putExtra("word", wordPair[0]);
+		startActivity(intent);
+	}
+
+	private void startGuessPictureActivity() {
+		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
+		intent.putExtra("player", players.getPlayers().get(request-playerAmmount));
+		intent.putExtra("playerAmmount", playerAmmount);
+		intent.putExtra("answer", answer);
+		request++;
+		startActivityForResult(intent, request);
+	}
+
+	private void startDrawActivity() {
+		Intent intent = new Intent(getActivity(), DrawActivity.class);
+		intent.putExtra("player", players.getPlayers().get(request));
+		intent.putExtra("index", request);
+		if(request == answer){
+			intent.putExtra("word", wordPair[0]);
+		} else {
+			intent.putExtra("word", wordPair[1]);
+		}
+		request++;
+		startActivityForResult(intent, request);
+	}
+	
+	
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		playerAmmount = 3 + position;
         switch (position) {
             case 0:
-            	player4.setVisibility(View.GONE);
-            	player5.setVisibility(View.GONE);
-            	player6.setVisibility(View.GONE);
+			setVisibility();
                 break;
             case 1:
             	player4.setVisibility(View.VISIBLE);
