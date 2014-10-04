@@ -1,14 +1,23 @@
 package com.example.partydrawandroid;
 
-public class Player {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Player implements Serializable{
 	
 	private String name;
 	private int points;
 	private int guess;
+	private int index;
 	
-	public Player(String name){
+	public Player(String name, int index){
 		this.setName(name);
-		this.points = 0;	
+		this.points = 0;
+		this.index = index;
+	}
+	
+	public int getIndex(){
+		return this.index;
 	}
 
 	public String getName() {
@@ -24,7 +33,6 @@ public class Player {
 	}
 
 	public void addPoints(int points) {
-		if (points > 0)
 			this.points += points;
 	}
 

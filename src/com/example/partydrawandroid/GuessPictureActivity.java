@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 
 public class GuessPictureActivity extends Activity {
 	
-	private int index;
+	private Player player;
 	private int playerAmmount;
 	private ImageView view1;
 	private ImageView view2;
@@ -43,41 +43,23 @@ public class GuessPictureActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_guess_picture);
+		
 		Intent intent = getIntent();
-		String name = intent.getStringExtra("name");
-		index = intent.getIntExtra("index", 0);
+		this.player = (Player) intent.getSerializableExtra("player");
 		playerAmmount = intent.getIntExtra("playerAmmount", 0);
 		
-		view1 = (ImageView)findViewById(R.id.imageView1);
-		view2 = (ImageView)findViewById(R.id.imageView2);
-		view3 = (ImageView)findViewById(R.id.imageView3);
-		view4 = (ImageView)findViewById(R.id.imageView4);
-		view5 = (ImageView)findViewById(R.id.imageView5);
-		view6 = (ImageView)findViewById(R.id.imageView6);
-		
-		layout4 = (LinearLayout)findViewById(R.id.layoutView4);
-		layout5 = (LinearLayout)findViewById(R.id.layoutView5);
-		layout6 = (LinearLayout)findViewById(R.id.layoutView6);
-		
-		layout4.setVisibility(View.GONE);
-		layout5.setVisibility(View.GONE);
-		layout6.setVisibility(View.GONE);
-		
-		view1.setVisibility(View.GONE);
-		view2.setVisibility(View.GONE);
-		view3.setVisibility(View.GONE);
-		view4.setVisibility(View.GONE);
-		view5.setVisibility(View.GONE);
-		view6.setVisibility(View.GONE);
-		
-		
-		
-		
-		
-		
+		getImageViews();		
+		getLinearLayouts();	
+		setLinearLayoutVisibility();	
+		setImageViewVisivility();
+		showReadyAlert();
+
+	}
+
+	private void showReadyAlert() {
 		new AlertDialog.Builder(this)
         .setTitle("Guess picture")
-        .setMessage(name + " guess picture")
+        .setMessage(this.player.getName() + " guess picture")
         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) { 
                 playerGuess();
@@ -85,7 +67,36 @@ public class GuessPictureActivity extends Activity {
          })
         .setIcon(android.R.drawable.ic_dialog_alert)
         .show();
+	}
 
+	private void setImageViewVisivility() {
+		view1.setVisibility(View.GONE);
+		view2.setVisibility(View.GONE);
+		view3.setVisibility(View.GONE);
+		view4.setVisibility(View.GONE);
+		view5.setVisibility(View.GONE);
+		view6.setVisibility(View.GONE);
+	}
+
+	private void setLinearLayoutVisibility() {
+		layout4.setVisibility(View.GONE);
+		layout5.setVisibility(View.GONE);
+		layout6.setVisibility(View.GONE);
+	}
+
+	private void getLinearLayouts() {
+		layout4 = (LinearLayout)findViewById(R.id.layoutView4);
+		layout5 = (LinearLayout)findViewById(R.id.layoutView5);
+		layout6 = (LinearLayout)findViewById(R.id.layoutView6);
+	}
+
+	private void getImageViews() {
+		view1 = (ImageView)findViewById(R.id.imageView1);
+		view2 = (ImageView)findViewById(R.id.imageView2);
+		view3 = (ImageView)findViewById(R.id.imageView3);
+		view4 = (ImageView)findViewById(R.id.imageView4);
+		view5 = (ImageView)findViewById(R.id.imageView5);
+		view6 = (ImageView)findViewById(R.id.imageView6);
 	}
 	
 	public void playerGuess(){

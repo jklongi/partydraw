@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.UUID;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -34,6 +33,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 	private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
 	private String filePath;
 	private int index;
+	private Player player;
 	
 	public void paintClicked(View view) {
 		
@@ -64,12 +64,12 @@ public class DrawActivity extends Activity implements OnClickListener {
         
         
         Intent intent = getIntent();
-		String name = intent.getStringExtra("name");
+		this.player = (Player) intent.getSerializableExtra("player");
 		index = intent.getIntExtra("index", 0);
 		
         new AlertDialog.Builder(this)
         .setTitle("Draw")
-        .setMessage(name + " are you ready to draw?")
+        .setMessage(player.getName() + " are you ready to draw?")
         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) { 
                 playerIsReady();

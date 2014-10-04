@@ -21,9 +21,8 @@ import android.widget.TextView;
 
 public class CorrectAnswerActivity extends Activity {
 	
-	private int index;
-	private String name;
 	private String word;
+	private Player player;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +31,19 @@ public class CorrectAnswerActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_correct_answer);
+		
 		Intent intent = getIntent();
-		index = intent.getIntExtra("index", 0);
-		name = intent.getStringExtra("player");
+		this.player = (Player) intent.getSerializableExtra("player");
 		word = intent.getStringExtra("word");
 		
 		TextView view = (TextView)findViewById(R.id.correctTextView);
-		view.setText("Correct Answer was " + "'" + word + "'" + " by " + name + "!");
+		view.setText("Correct Answer was " + "'" + word + "'" + " by " + player.getName() + "!");
 		
 		ContextWrapper cw = new ContextWrapper(getApplicationContext());
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 		
 			try {
-		        File f=new File(directory, "player" + index + ".jpg");
+		        File f=new File(directory, "player" + player.getIndex() + ".jpg");
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
 		        ImageView img = (ImageView)findViewById(R.id.correctImage);
 		        

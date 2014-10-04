@@ -90,9 +90,9 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
 		for(int i = 0; i < playerAmmount; i++){
 			if(playerNames[i].trim().length() != 0){
-				playerlist.add(new Player(playerNames[i]));
+				playerlist.add(new Player(playerNames[i], i));
 			} else{
-				playerlist.add(new Player("Player" + (i+1) ));
+				playerlist.add(new Player("Player" + (i+1), i ));
 			}
 		}
 	}
@@ -114,7 +114,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	    if (requestCode == request) {
 	    	if(request < playerAmmount){
 	    		Intent intent = new Intent(getActivity(), DrawActivity.class);
-				intent.putExtra("name", players.getPlayers().get(request).getName());
+				intent.putExtra("player", players.getPlayers().get(request));
 				intent.putExtra("index", request);
 				if(request == answer){
 					intent.putExtra("word", guess[0]);
@@ -125,16 +125,15 @@ public class Main extends Fragment implements OnItemSelectedListener {
 				startActivityForResult(intent, request);
 	    	} else if(request < playerAmmount * 2){
 	    		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
-				intent.putExtra("name", players.getPlayers().get(request-playerAmmount).getName());
-				intent.putExtra("index", request-playerAmmount);
+				intent.putExtra("player", players.getPlayers().get(request-playerAmmount));
 				intent.putExtra("playerAmmount", playerAmmount);
 				request++;
 				startActivityForResult(intent, request);
 	    	} else {
 	    		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
+	    		intent.putExtra("player", players.getPlayers().get(answer));
 				intent.putExtra("index", answer);
 				intent.putExtra("word", guess[0]);
-				intent.putExtra("player", players.getPlayers().get(answer).getName());
 				startActivity(intent);
 	    	}
 	    }
