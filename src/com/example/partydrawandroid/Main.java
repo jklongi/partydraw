@@ -4,6 +4,9 @@ package com.example.partydrawandroid;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,7 +24,9 @@ import android.widget.Spinner;
 
 public class Main extends Fragment implements OnItemSelectedListener {
 	
-	private Players players;
+
+	private WordPair pair;
+	private Random random;
 	private Spinner spinner;
     private static final String[]options = {"3 players", "4 players", "5 players", "6 players"};
     private int playerAmmount;
@@ -29,25 +34,43 @@ public class Main extends Fragment implements OnItemSelectedListener {
     private EditText player1, player2, player3, player4, player5,player6;
     private String[] wordPair;
     private int answer;
-    Button b1;
+    private View main;
+    private ArrayList<Player> playerlist;
+    
+    
+    Button start;
+    Button quit;
     Fragment fragment = this;
     
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View main = inflater.inflate(R.layout.main_frag, container, false);
-		players = new Players();	
+		main = inflater.inflate(R.layout.main_frag, container, false);
+
+		pair = new WordPair();
+		random = new Random();
+		playerlist = new ArrayList<Player>();
+		
 		createSpinner(main);
-		getEditTextFields(main);
+		getEditTextFields();
         setVisibility();
         
-        b1 = (Button) main.findViewById(R.id.startButton);
-        b1.setOnClickListener(new OnClickListener() {
+        start = (Button) main.findViewById(R.id.startButton);
+        start.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
             	playGame(view);
             }
         });
+        
+        quit = (Button) main.findViewById(R.id.quitButton);
+        quit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	quitGame(view);
+            }
+        });
+        
 		
         return main;
 	}
@@ -55,7 +78,6 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	private void createSpinner(View main) {
 		spinner = (Spinner)main.findViewById(R.id.spinner);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, options);
-        
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -67,7 +89,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
         player6.setVisibility(View.GONE);
 	}
 
-	private void getEditTextFields(View main) {
+	private void getEditTextFields() {
 		player1 = (EditText) main.findViewById(R.id.player1);   
         player2 = (EditText) main.findViewById(R.id.player2);
         player3 = (EditText) main.findViewById(R.id.player3); 
@@ -76,32 +98,51 @@ public class Main extends Fragment implements OnItemSelectedListener {
         player6 = (EditText) main.findViewById(R.id.player6);
 	}
 	
+	public void quitGame(View view){
+		AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setMessage("Quit Game?");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                getActivity().finish();
+            }
+        });
+        builder1.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+	}
+	
 	public void playGame(View view){
 		request = 0;
-		WordPair pair = new WordPair();
 		wordPair = pair.getPair();	
-		Random random = new Random();
-		answer = random.nextInt(playerAmmount);		
-		setPlayerList();
+		answer = random.nextInt(playerAmmount);
+
+		String[] playerNames = playersToArray();		
+		playerNamesToArray(playerlist, playerNames);
 		
 		Intent intent = new Intent(getActivity(), PrepareActivity.class);
 		fragment.startActivityForResult(intent, request);
 		
 	}
 
-	private void setPlayerList() {
-		ArrayList<Player> playerlist = new ArrayList<Player>();
-		String[] playerNames = playersToArray();		
-		playerNamesToArray(playerlist, playerNames);		
-		players.setPlayers(playerlist);
-	}
 
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
 		for(int i = 0; i < playerAmmount; i++){
-			if(playerNames[i].trim().length() != 0){
-				playerlist.add(new Player(playerNames[i], i));
+			if(playerlist.size() >= playerAmmount && 
+					(playerlist.get(i).getName().equals(playerNames[i]) 
+							|| playerlist.get(i).getName().equals("player"+(i+1)) ) ){
+				continue;
+			} else if(playerNames[i].trim().length() != 0){
+				playerlist.add(i ,new Player(playerNames[i], i));
 			} else{
-				playerlist.add(new Player("Player" + (i+1), i ));
+				playerlist.add(i, new Player("Player" + (i+1), i ));
 			}
 		}
 	}
@@ -121,27 +162,42 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == request) {
+	    	if(resultCode == Activity.RESULT_OK){
+	    		playerlist.get(request-playerAmmount-1).addPoints(1);
+	    	}
 	    	if(request < playerAmmount){
 	    		startDrawActivity();
 	    	} else if(request < playerAmmount * 2){
 	    		startGuessPictureActivity();
-	    	} else {
+	    	} else if (request == playerAmmount * 2){
 	    		startCorrectAnswerActivity();
+	    	} else {
+	    		startDisplayScoresAcitivty();
 	    	}
 	    }
 	}
 
+	private void startDisplayScoresAcitivty(){
+		Intent intent = new Intent(getActivity(), DisplayScoresActivity.class);
+		intent.putExtra("playerAmmount", playerAmmount);
+		for (int i = 0; i < playerAmmount ; i++){
+			intent.putExtra("player" + (i+1), playerlist.get(i));
+		}
+		startActivity(intent);
+	}
+	
 	private void startCorrectAnswerActivity() {
 		Intent intent = new Intent(getActivity(), CorrectAnswerActivity.class);
-		intent.putExtra("player", players.getPlayers().get(answer));
+		intent.putExtra("player", playerlist.get(answer));
 		intent.putExtra("index", answer);
 		intent.putExtra("word", wordPair[0]);
-		startActivity(intent);
+		request++;
+		startActivityForResult(intent, request);
 	}
 
 	private void startGuessPictureActivity() {
 		Intent intent = new Intent(getActivity(), GuessPictureActivity.class);
-		intent.putExtra("player", players.getPlayers().get(request-playerAmmount));
+		intent.putExtra("player", playerlist.get(request-playerAmmount));
 		intent.putExtra("playerAmmount", playerAmmount);
 		intent.putExtra("answer", answer);
 		request++;
@@ -150,7 +206,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 
 	private void startDrawActivity() {
 		Intent intent = new Intent(getActivity(), DrawActivity.class);
-		intent.putExtra("player", players.getPlayers().get(request));
+		intent.putExtra("player", playerlist.get(request));
 		intent.putExtra("index", request);
 		if(request == answer){
 			intent.putExtra("word", wordPair[0]);

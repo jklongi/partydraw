@@ -44,7 +44,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="fill_parent"
 		    android:contentDescription="@string/save"
-		    android:src="@drawable/save"
+		    android:src="@drawable/ic_action_accept"
 		    android:layout_alignParentRight="true" />
         
 
@@ -52,10 +52,17 @@
             android:id="@+id/word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:textSize="25sp"
             android:textColor="#54dceb" />
+        
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="#FF4444"
+            android:textSize="25sp" />
         
 	</RelativeLayout>
 	

@@ -15,8 +15,6 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
 	        case 0:
 	            return new Main();
 	        case 1:
-	            return new Score();
-	        case 2:
 	            return new Guide();
 	        }
 	    return null;
@@ -24,6 +22,6 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     
 	@Override
 	public int getCount() {
-	    return 3;
+	    return 2;
 	}
 }

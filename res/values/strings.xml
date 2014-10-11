@@ -17,12 +17,6 @@
     <string name="player_ammount">How many players?</string>
     <string name="play_game">Play Game</string>
     <string name="player_name">Player Name</string>
-    <string name="player_name1">Player1 Name</string>
-    <string name="player_name2">Player2 Name</string>
-    <string name="player_name3">Player3 Name</string>
-    <string name="player_name4">Player4 Name</string>
-    <string name="player_name5">Player5 Name</string>
-    <string name="player_name6">Player6 Name</string>
     <string name="title_activity_prepare">PrepareActivity</string>
     <string name="prepare">Prepare to draw!</string>
     <string name="ready">Ready!</string>
@@ -32,5 +26,11 @@
     <string name="description">Image description</string>
     <string name="title_activity_correct_answer">CorrectAnswerActivity</string>
     <string name="answer">The correct answer was!</string>
+    <string name="title_activity_display_scores">DisplayScoresActivity</string>
+    <string name="displayScore">Player scores:</string>
+    <string name="quit_game">Quit Game</string>
+    <string name="new_img">New</string>
+    <string name="tap_anywhere">Tap Anywhere To Continue</string>
+    
 
 </resources>

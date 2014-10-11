@@ -41,6 +41,10 @@
             android:name=".CorrectAnswerActivity"
             android:label="@string/title_activity_correct_answer" >
         </activity>
+        <activity
+            android:name=".DisplayScoresActivity"
+            android:label="@string/title_activity_display_scores" >
+        </activity>
     </application>
 
 </manifest>

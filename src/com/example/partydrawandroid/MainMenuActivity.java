@@ -13,10 +13,9 @@ import android.view.MenuItem;
 
 public class MainMenuActivity extends FragmentActivity {
 	
-    
-    ViewPager Tab;
-    TabPagerAdapter TabAdapter;
-    ActionBar actionBar;
+    public ViewPager Tab;
+    public TabPagerAdapter TabAdapter;
+    public ActionBar actionBar;
  
     
 	@Override
@@ -56,7 +55,7 @@ public class MainMenuActivity extends FragmentActivity {
 		};
       
 	    actionBar.addTab(actionBar.newTab().setText("Play").setTabListener(tabListener));
-	    actionBar.addTab(actionBar.newTab().setText("Scores").setTabListener(tabListener));
+	    //actionBar.addTab(actionBar.newTab().setText("Scores").setTabListener(tabListener));
 	    actionBar.addTab(actionBar.newTab().setText("How to Play?").setTabListener(tabListener));
 	}
 	

@@ -15,6 +15,9 @@ public class Guide extends Fragment {
         ((TextView)guide.findViewById(R.id.guide)).setText(
         		"Each player gets the same word to draw except one player gets word similiar to the others. " +
         		"Each player then has to guess which picture had different word. ");
+        ((TextView)guide.findViewById(R.id.note)).setText("Scores will reset if you change name or the ammount of players");
+        
+        
         return guide;
 	}
 }

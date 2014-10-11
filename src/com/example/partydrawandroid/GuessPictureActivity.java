@@ -156,42 +156,54 @@ public class GuessPictureActivity extends Activity {
 	
 	public void guessPicture1(View view){
 		if(answer == 0){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();	
 	}
 	
 	public void guessPicture2(View view){
 		if(answer == 1){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();
 	}
 	
 	public void guessPicture3(View view){
 		if(answer == 2){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();
 	}
 	
 	public void guessPicture4(View view){
 		if(answer == 3){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();
 	}
 	
 	public void guessPicture5(View view){
 		if(answer == 4){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();
 	}
 	
 	public void guessPicture6(View view){
 		if(answer == 5){
-			player.addPoints(1);
+			Intent returnIntent = new Intent();
+			setResult(RESULT_OK,returnIntent);
+			finish();
 		}
 		finish();
 	}

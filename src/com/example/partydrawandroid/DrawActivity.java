@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 	private String filePath;
 	private int index;
 	private Player player;
+	private TextView timer;
 	
 	public void paintClicked(View view) {
 		
@@ -60,7 +62,7 @@ public class DrawActivity extends Activity implements OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_draw);
         
         
         Intent intent = getIntent();
@@ -84,8 +86,24 @@ public class DrawActivity extends Activity implements OnClickListener {
     	Intent intent = getIntent();
 		String word = intent.getStringExtra("word");
 		
+		timer = (TextView) findViewById(R.id.timer);
+		
+		new CountDownTimer(30000, 1000) {
+
+		     public void onTick(long millisUntilFinished) {
+		         timer.setText("Time left: " + millisUntilFinished / 1000);
+		     }
+
+		     public void onFinish() {
+		         timer.setText("done!");
+		         saveImage();
+		         finish();
+		     }
+		  }.start();
+		
 		TextView drawword = (TextView) findViewById(R.id.word);
 		drawword.setText("Draw '" + word + "'");
+		
 		
     	
     	dv = (DrawView) findViewById(R.id.drawing);
