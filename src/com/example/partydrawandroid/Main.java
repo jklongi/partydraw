@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 
 
 public class Main extends Fragment implements OnItemSelectedListener {
@@ -71,9 +73,9 @@ public class Main extends Fragment implements OnItemSelectedListener {
             }
         });
         
-		
-        return main;
+       return main;
 	}
+	
 
 	private void createSpinner(View main) {
 		spinner = (Spinner)main.findViewById(R.id.spinner);
@@ -89,7 +91,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
         player6.setVisibility(View.GONE);
 	}
 
-	private void getEditTextFields() {
+	private void getEditTextFields() {		
 		player1 = (EditText) main.findViewById(R.id.player1);   
         player2 = (EditText) main.findViewById(R.id.player2);
         player3 = (EditText) main.findViewById(R.id.player3); 
@@ -113,10 +115,9 @@ public class Main extends Fragment implements OnItemSelectedListener {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
-        });
+        }).create().show();
 
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+
 	}
 	
 	public void playGame(View view){
@@ -134,11 +135,15 @@ public class Main extends Fragment implements OnItemSelectedListener {
 
 
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
+		System.out.println(playerlist.toString());
 		for(int i = 0; i < playerAmmount; i++){
-			if(playerlist.size() >= playerAmmount && 
+			System.out.println(playerAmmount);
+			if(playerlist.size() == playerAmmount && 
 					(playerlist.get(i).getName().equals(playerNames[i]) 
-							|| playerlist.get(i).getName().equals("player"+(i+1)) ) ){
+							|| (playerlist.get(i).getName().equals("Player"+(i+1)) 
+									&& playerNames[i].trim().length() == 0) ) ){
 				continue;
+				
 			} else if(playerNames[i].trim().length() != 0){
 				playerlist.add(i ,new Player(playerNames[i], i));
 			} else{

@@ -15,7 +15,7 @@
     <string name="title_activity_main_menu">MainMenu</string>
     <string name="hello_world">Hello world!</string>
     <string name="player_ammount">How many players?</string>
-    <string name="play_game">Play Game</string>
+    <string name="play_game">Play</string>
     <string name="player_name">Player Name</string>
     <string name="title_activity_prepare">PrepareActivity</string>
     <string name="prepare">Prepare to draw!</string>
@@ -28,7 +28,7 @@
     <string name="answer">The correct answer was!</string>
     <string name="title_activity_display_scores">DisplayScoresActivity</string>
     <string name="displayScore">Player scores:</string>
-    <string name="quit_game">Quit Game</string>
+    <string name="quit_game">Quit</string>
     <string name="new_img">New</string>
     <string name="tap_anywhere">Tap Anywhere To Continue</string>
     

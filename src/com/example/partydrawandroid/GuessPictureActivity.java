@@ -67,7 +67,6 @@ public class GuessPictureActivity extends Activity {
                 playerGuess();
             }
          })
-        .setIcon(android.R.drawable.ic_dialog_alert)
         .show();
 	}
 

@@ -77,7 +77,6 @@ public class DrawActivity extends Activity implements OnClickListener {
                 playerIsReady();
             }
          })
-        .setIcon(android.R.drawable.ic_dialog_alert)
         .show();
     }
     
@@ -88,34 +87,24 @@ public class DrawActivity extends Activity implements OnClickListener {
 		
 		timer = (TextView) findViewById(R.id.timer);
 		
-		new CountDownTimer(30000, 1000) {
-
-		     public void onTick(long millisUntilFinished) {
-		         timer.setText("Time left: " + millisUntilFinished / 1000);
-		     }
-
-		     public void onFinish() {
-		         timer.setText("done!");
-		         saveImage();
-		         finish();
-		     }
-		  }.start();
+		setTimer();
+		
 		
 		TextView drawword = (TextView) findViewById(R.id.word);
 		drawword.setText("Draw '" + word + "'");
 		
+		smallBrush = getResources().getInteger(R.integer.small_size);
+        mediumBrush = getResources().getInteger(R.integer.medium_size);
+        largeBrush = getResources().getInteger(R.integer.large_size);
 		
     	
     	dv = (DrawView) findViewById(R.id.drawing);
-        dv.setBrushSize(mediumBrush);
+        dv.setBrushSize(smallBrush);
         
         LinearLayout paintLayout = (LinearLayout) findViewById(R.id.paint_colors);
         currPaint = (ImageButton) paintLayout.getChildAt(0);
         currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
         
-        smallBrush = getResources().getInteger(R.integer.small_size);
-        mediumBrush = getResources().getInteger(R.integer.medium_size);
-        largeBrush = getResources().getInteger(R.integer.large_size);
         
         drawBtn = (ImageButton) findViewById(R.id.draw_btn);
         
@@ -131,6 +120,21 @@ public class DrawActivity extends Activity implements OnClickListener {
         saveBtn.setOnClickListener(this);
         
     }
+
+	private void setTimer() {
+		new CountDownTimer(30000, 1000) {
+
+		     public void onTick(long millisUntilFinished) {
+		         timer.setText("Time left: " + millisUntilFinished / 1000);
+		     }
+
+		     public void onFinish() {
+		         timer.setText("done!");
+		         saveImage();
+		         finish();
+		     }
+		  }.start();
+	}
 
 
     @Override
