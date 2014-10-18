@@ -3,6 +3,9 @@ package com.example.partydrawandroid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,6 +35,7 @@ public class GuessPictureActivity extends Activity {
 	private ImageView view4;
 	private ImageView view5;
 	private ImageView view6;
+	final int[] images = {R.id.imageView1, R.id.imageView2, R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6};
 	
 	LinearLayout layout4;
 	LinearLayout layout5;
@@ -77,6 +81,7 @@ public class GuessPictureActivity extends Activity {
 		view4.setVisibility(View.GONE);
 		view5.setVisibility(View.GONE);
 		view6.setVisibility(View.GONE);
+
 	}
 
 	private void setLinearLayoutVisibility() {
@@ -104,29 +109,37 @@ public class GuessPictureActivity extends Activity {
 		
 		ContextWrapper cw = new ContextWrapper(getApplicationContext());
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-		
+		/*
+		ImageView[] views = {view1, view2, view3, view4, view5, view6};
+		ArrayList<ImageView> usedViews = new ArrayList<ImageView>();
+		for(int i = 0; i < playerAmmount; i++){
+			usedViews.add(views[i]);
+		}
+		Collections.shuffle(usedViews);
+		 */
 		for(int i = 0 ; i < playerAmmount; i++){
+			
 			try {
 		        File f=new File(directory, "player" + i + ".jpg");
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
 		        ImageView img;
 		        if(i == 0){
 		        	view1.setVisibility(View.VISIBLE);
-		        	img=view1;
+		        	img = view1;
 		        } else if(i == 1){
 		        	view2.setVisibility(View.VISIBLE);
-		        	img=view2;
+		        	img = view2;
 		        } else if(i == 2){
 		        	view3.setVisibility(View.VISIBLE);
-		        	img=view3;
+		        	img = view3;
 		        } else if(i == 3){
 		        	layout4.setVisibility(View.VISIBLE);
 		        	view4.setVisibility(View.VISIBLE);
-		        	img=view4;
+		        	img = view4;
 		        } else if(i == 4){
 		        	layout5.setVisibility(View.VISIBLE);
 		        	view5.setVisibility(View.VISIBLE);
-		        	img=view5;
+		        	img = view5;
 		        } else {
 		        	
 		        	layout6.setVisibility(View.VISIBLE);

@@ -30,10 +30,9 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	private WordPair pair;
 	private Random random;
 	private Spinner spinner;
-    private static final String[]options = {"3 players", "4 players", "5 players", "6 players"};
+    private static final String[] options = {"3 players", "4 players", "5 players", "6 players"};
     private int playerAmmount;
     private int request;
-    private EditText player1, player2, player3, player4, player5,player6;
     private String[] wordPair;
     private int answer;
     private View main;
@@ -54,7 +53,6 @@ public class Main extends Fragment implements OnItemSelectedListener {
 		playerlist = new ArrayList<Player>();
 		
 		createSpinner(main);
-		getEditTextFields();
         setVisibility();
         
         start = (Button) main.findViewById(R.id.startButton);
@@ -86,19 +84,12 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	}
 
 	private void setVisibility() {
-		player4.setVisibility(View.GONE);
-        player5.setVisibility(View.GONE);
-        player6.setVisibility(View.GONE);
+		main.findViewById(R.id.player4).setVisibility(View.GONE);
+		main.findViewById(R.id.player5).setVisibility(View.GONE);
+		main.findViewById(R.id.player6).setVisibility(View.GONE);
 	}
 
-	private void getEditTextFields() {		
-		player1 = (EditText) main.findViewById(R.id.player1);   
-        player2 = (EditText) main.findViewById(R.id.player2);
-        player3 = (EditText) main.findViewById(R.id.player3); 
-        player4 = (EditText) main.findViewById(R.id.player4);  
-        player5 = (EditText) main.findViewById(R.id.player5);
-        player6 = (EditText) main.findViewById(R.id.player6);
-	}
+
 	
 	public void quitGame(View view){
 		AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
@@ -135,33 +126,35 @@ public class Main extends Fragment implements OnItemSelectedListener {
 
 
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
-		System.out.println(playerlist.toString());
 		for(int i = 0; i < playerAmmount; i++){
-			System.out.println(playerAmmount);
-			if(playerlist.size() == playerAmmount && 
-					(playerlist.get(i).getName().equals(playerNames[i]) 
-							|| (playerlist.get(i).getName().equals("Player"+(i+1)) 
-									&& playerNames[i].trim().length() == 0) ) ){
-				continue;
-				
-			} else if(playerNames[i].trim().length() != 0){
-				playerlist.add(i ,new Player(playerNames[i], i));
+			if(playerlist.size() > i){
+				if(!playerlist.get(i).getName().equals(playerNames[i])){
+					playerlist.set(i ,new Player(playerNames[i], i));
+				}				
 			} else{
-				playerlist.add(i, new Player("Player" + (i+1), i ));
+				playerlist.add(i ,new Player(playerNames[i], i));
 			}
+			
 		}
+		System.out.println(playerlist.toString());
 	}
 
 	private String[] playersToArray() {
-		String[] playerNames = {
-    			player1.getText().toString(),
-    			player2.getText().toString(),
-    			player3.getText().toString(),
-    			player4.getText().toString(),
-    			player5.getText().toString(),
-    			player6.getText().toString()
-    	};
+		int ids[] = {R.id.player1, R.id.player2, R.id.player3, R.id.player4, R.id.player5, R.id.player6}; 
+		String[] playerNames = new String[6];
+		for (int i = 0; i < playerNames.length; i++){
+			EditText player = (EditText) main.findViewById(ids[i]);	
+			playerNames[i] = replaceEmpty(player.getText().toString(), i);
+		}
 		return playerNames;
+	}
+	
+	private String replaceEmpty(String name, int i){
+		if(name.trim().length() != 0){
+			return name;
+		} else {
+			return "Player" + (i+1);
+		}
 	}
 	
 	@Override
@@ -232,19 +225,19 @@ public class Main extends Fragment implements OnItemSelectedListener {
 			setVisibility();
                 break;
             case 1:
-            	player4.setVisibility(View.VISIBLE);
-            	player5.setVisibility(View.GONE);
-            	player6.setVisibility(View.GONE);
+            	main.findViewById(R.id.player4).setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player5).setVisibility(View.GONE);
+            	main.findViewById(R.id.player6).setVisibility(View.GONE);
                 break;
             case 2:
-            	player4.setVisibility(View.VISIBLE);
-            	player5.setVisibility(View.VISIBLE);
-            	player6.setVisibility(View.GONE);
+            	main.findViewById(R.id.player4).setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player5).setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player6).setVisibility(View.GONE);
                 break;
             case 3:
-            	player4.setVisibility(View.VISIBLE);
-            	player5.setVisibility(View.VISIBLE);
-            	player6.setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player4).setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player5).setVisibility(View.VISIBLE);
+            	main.findViewById(R.id.player6).setVisibility(View.VISIBLE);
                 break;
 
         }
