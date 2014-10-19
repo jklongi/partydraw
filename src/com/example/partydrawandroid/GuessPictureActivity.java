@@ -109,50 +109,58 @@ public class GuessPictureActivity extends Activity {
 		
 		ContextWrapper cw = new ContextWrapper(getApplicationContext());
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-		/*
+
 		ImageView[] views = {view1, view2, view3, view4, view5, view6};
 		ArrayList<ImageView> usedViews = new ArrayList<ImageView>();
 		for(int i = 0; i < playerAmmount; i++){
 			usedViews.add(views[i]);
 		}
 		Collections.shuffle(usedViews);
-		 */
+		
+		this.answer = getIntent().getIntExtra("answer", 0);
+
 		for(int i = 0 ; i < playerAmmount; i++){
 			
 			try {
 		        File f=new File(directory, "player" + i + ".jpg");
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
 		        ImageView img;
-		        if(i == 0){
-		        	view1.setVisibility(View.VISIBLE);
-		        	img = view1;
-		        } else if(i == 1){
-		        	view2.setVisibility(View.VISIBLE);
-		        	img = view2;
-		        } else if(i == 2){
-		        	view3.setVisibility(View.VISIBLE);
-		        	img = view3;
-		        } else if(i == 3){
+		        ImageView currentView = usedViews.get(i);
+		        currentView.setVisibility(View.VISIBLE);
+		        if (answer == i){
+		        	changeAnswer(currentView);
+		        }
+		        if(currentView == view4){
 		        	layout4.setVisibility(View.VISIBLE);
-		        	view4.setVisibility(View.VISIBLE);
-		        	img = view4;
-		        } else if(i == 4){
+		        } else if(currentView == view5){
 		        	layout5.setVisibility(View.VISIBLE);
-		        	view5.setVisibility(View.VISIBLE);
-		        	img = view5;
-		        } else {
-		        	
+		        } else if(currentView == view6){
 		        	layout6.setVisibility(View.VISIBLE);
-		        	view6.setVisibility(View.VISIBLE);
-		        	img=view6;
 		        }
 		        
+		        img = currentView;
 		        img.setImageBitmap(b);
 		    } catch (FileNotFoundException e) {
 		        e.printStackTrace();
 		    }
 		}
 		
+	}
+
+	private void changeAnswer(View currentView) {
+		if(currentView == view1){
+			answer = 10;
+		} else if(currentView == view2){
+			answer = 20;
+		} else if(currentView == view3){
+			answer = 30;
+		} else if(currentView == view4){
+			answer = 40;
+		} else if(currentView == view5){
+			answer = 50;
+		} else if(currentView == view6){
+			answer = 60;
+		}
 	}
 
 	@Override
@@ -167,7 +175,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture1(View view){
-		if(answer == 0){
+		if(answer == 10){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
@@ -176,7 +184,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture2(View view){
-		if(answer == 1){
+		if(answer == 20){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
@@ -185,7 +193,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture3(View view){
-		if(answer == 2){
+		if(answer == 30){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
@@ -194,7 +202,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture4(View view){
-		if(answer == 3){
+		if(answer == 40){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
@@ -203,7 +211,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture5(View view){
-		if(answer == 4){
+		if(answer == 50){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
@@ -212,7 +220,7 @@ public class GuessPictureActivity extends Activity {
 	}
 	
 	public void guessPicture6(View view){
-		if(answer == 5){
+		if(answer == 60){
 			Intent returnIntent = new Intent();
 			setResult(RESULT_OK,returnIntent);
 			finish();
