@@ -16,7 +16,21 @@ public class WordPair {
 		add("Stick","Cane");
 		add("Giraffe","Camel");
 		add("Fireman","Doctor");
-		add("Mansion","Hounted House");
+		add("Mansion","House");
+		add("Sunset","Landscape");
+		add("Man","Woman");
+		add("Pencil","Spike");
+		add("Closet","Door");
+		add("Tree","Bush");
+		add("Guitar","Bass");
+		add("Explosion","Cloud");
+		add("Zeppelin","Balloon");
+		add("Plane","Missile");
+		add("Pig","Cow");
+		add("Shark","Salmon");
+		add("Strawberry","Raspberry");
+		add("Gorilla","Human");
+		add("Sock","Shoe");
 		
 	}
 	

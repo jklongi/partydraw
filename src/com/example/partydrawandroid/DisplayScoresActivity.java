@@ -1,7 +1,14 @@
 package com.example.partydrawandroid;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;

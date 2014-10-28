@@ -2,6 +2,7 @@ package com.example.partydrawandroid;
 
 import com.example.partydrawandroid.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -11,11 +12,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+@SuppressLint("ClickableViewAccessibility") 
 public class DrawView extends View {
 	
 	private Path drawPath;
@@ -34,7 +35,7 @@ public class DrawView extends View {
 
 	public void setupDrawing() {
 		
-		brushSize = getResources().getInteger(R.integer.medium_size);
+		brushSize = getResources().getInteger(R.integer.small_size);
 		lastBrushSize = brushSize;
 		
 		drawPath = new Path();

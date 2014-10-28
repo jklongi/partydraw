@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,8 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 
 
 public class Main extends Fragment implements OnItemSelectedListener {
@@ -37,6 +36,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
     private int answer;
     private View main;
     private ArrayList<Player> playerlist;
+    private MediaPlayer mp;
     
     
     Button start;
@@ -48,6 +48,8 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		main = inflater.inflate(R.layout.main_frag, container, false);
 
+		mp = MediaPlayer.create(getActivity(), R.raw.click);
+		
 		pair = new WordPair();
 		random = new Random();
 		playerlist = new ArrayList<Player>();
@@ -59,6 +61,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
         start.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+            	mp.start();
             	playGame(view);
             }
         });
@@ -67,6 +70,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
         quit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+            	mp.start();
             	quitGame(view);
             }
         });
@@ -91,19 +95,21 @@ public class Main extends Fragment implements OnItemSelectedListener {
 
 
 	
-	public void quitGame(View view){
+	public void quitGame(View view){   
 		AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setMessage("Quit Game?");
         builder1.setCancelable(true);
         builder1.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+            	mp.start();
                 getActivity().finish();
             }
         });
         builder1.setNegativeButton("No",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+            	mp.start();
                 dialog.cancel();
             }
         }).create().show();
@@ -136,7 +142,6 @@ public class Main extends Fragment implements OnItemSelectedListener {
 			}
 			
 		}
-		System.out.println(playerlist.toString());
 	}
 
 	private String[] playersToArray() {

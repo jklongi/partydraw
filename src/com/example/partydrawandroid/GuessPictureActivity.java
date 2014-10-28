@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import android.app.Activity;
@@ -22,24 +21,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 public class GuessPictureActivity extends Activity {
 	
 	private Player player;
 	private int playerAmmount;
 	private int answer;
-	private ImageView view1;
-	private ImageView view2;
-	private ImageView view3;
-	private ImageView view4;
-	private ImageView view5;
-	private ImageView view6;
-	final int[] images = {R.id.imageView1, R.id.imageView2, R.id.imageView3, R.id.imageView4, R.id.imageView5, R.id.imageView6};
+	private ImageView[] views;
 	
-	LinearLayout layout4;
-	LinearLayout layout5;
-	LinearLayout layout6;
+	private final int[] imgIds = {R.id.imageView1, R.id.imageView2, R.id.imageView3,
+			R.id.imageView4, R.id.imageView5, R.id.imageView6};
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +46,10 @@ public class GuessPictureActivity extends Activity {
 		playerAmmount = intent.getIntExtra("playerAmmount", 0);
 		this.answer = intent.getIntExtra("answer", 0);
 		
-		getImageViews();		
-		getLinearLayouts();	
 		setLinearLayoutVisibility();	
 		setImageViewVisivility();
 		showReadyAlert();
+		
 
 	}
 
@@ -74,43 +65,23 @@ public class GuessPictureActivity extends Activity {
         .show();
 	}
 
-	private void setImageViewVisivility() {
-		view1.setVisibility(View.GONE);
-		view2.setVisibility(View.GONE);
-		view3.setVisibility(View.GONE);
-		view4.setVisibility(View.GONE);
-		view5.setVisibility(View.GONE);
-		view6.setVisibility(View.GONE);
-
-	}
 
 	private void setLinearLayoutVisibility() {
-		layout4.setVisibility(View.GONE);
-		layout5.setVisibility(View.GONE);
-		layout6.setVisibility(View.GONE);
+		findViewById(R.id.layoutView4).setVisibility(View.GONE);
+		findViewById(R.id.layoutView5).setVisibility(View.GONE);
+		findViewById(R.id.layoutView6).setVisibility(View.GONE);
 	}
 
-	private void getLinearLayouts() {
-		layout4 = (LinearLayout)findViewById(R.id.layoutView4);
-		layout5 = (LinearLayout)findViewById(R.id.layoutView5);
-		layout6 = (LinearLayout)findViewById(R.id.layoutView6);
-	}
-
-	private void getImageViews() {
-		view1 = (ImageView)findViewById(R.id.imageView1);
-		view2 = (ImageView)findViewById(R.id.imageView2);
-		view3 = (ImageView)findViewById(R.id.imageView3);
-		view4 = (ImageView)findViewById(R.id.imageView4);
-		view5 = (ImageView)findViewById(R.id.imageView5);
-		view6 = (ImageView)findViewById(R.id.imageView6);
+	private void setImageViewVisivility() {
+		views = new ImageView[6];
+		for(int i = 0 ; i < imgIds.length; i ++){
+			findViewById(imgIds[i]).setVisibility(View.GONE);
+			views[i] = (ImageView)findViewById(imgIds[i]);
+		}
 	}
 	
 	public void playerGuess(){
-		
-		ContextWrapper cw = new ContextWrapper(getApplicationContext());
-		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 
-		ImageView[] views = {view1, view2, view3, view4, view5, view6};
 		ArrayList<ImageView> usedViews = new ArrayList<ImageView>();
 		for(int i = 0; i < playerAmmount; i++){
 			usedViews.add(views[i]);
@@ -119,27 +90,30 @@ public class GuessPictureActivity extends Activity {
 		
 		this.answer = getIntent().getIntExtra("answer", 0);
 
+		ContextWrapper cw = new ContextWrapper(getApplicationContext());
+		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+		
+		
 		for(int i = 0 ; i < playerAmmount; i++){
 			
 			try {
-		        File f=new File(directory, "player" + i + ".jpg");
+		        File f=new File(directory, "player" + i + ".png");
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-		        ImageView img;
+		        
 		        ImageView currentView = usedViews.get(i);
 		        currentView.setVisibility(View.VISIBLE);
 		        if (answer == i){
 		        	changeAnswer(currentView);
 		        }
-		        if(currentView == view4){
-		        	layout4.setVisibility(View.VISIBLE);
-		        } else if(currentView == view5){
-		        	layout5.setVisibility(View.VISIBLE);
-		        } else if(currentView == view6){
-		        	layout6.setVisibility(View.VISIBLE);
+		        if(currentView == views[3]){
+		        	findViewById(R.id.layoutView4).setVisibility(View.VISIBLE);
+		        } else if(currentView == views[4]){
+		        	findViewById(R.id.layoutView5).setVisibility(View.VISIBLE);
+		        } else if(currentView == views[5]){
+		        	findViewById(R.id.layoutView6).setVisibility(View.VISIBLE);
 		        }
 		        
-		        img = currentView;
-		        img.setImageBitmap(b);
+		        currentView.setImageBitmap(b);
 		    } catch (FileNotFoundException e) {
 		        e.printStackTrace();
 		    }
@@ -147,18 +121,20 @@ public class GuessPictureActivity extends Activity {
 		
 	}
 
+
+
 	private void changeAnswer(View currentView) {
-		if(currentView == view1){
+		if(currentView == views[0]){
 			answer = 10;
-		} else if(currentView == view2){
+		} else if(currentView == views[1]){
 			answer = 20;
-		} else if(currentView == view3){
+		} else if(currentView == views[2]){
 			answer = 30;
-		} else if(currentView == view4){
+		} else if(currentView == views[3]){
 			answer = 40;
-		} else if(currentView == view5){
+		} else if(currentView == views[4]){
 			answer = 50;
-		} else if(currentView == view6){
+		} else if(currentView == views[5]){
 			answer = 60;
 		}
 	}

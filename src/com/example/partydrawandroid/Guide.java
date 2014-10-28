@@ -13,11 +13,10 @@ public class Guide extends Fragment {
 		View guide = inflater.inflate(R.layout.guide_frag, container, false);
         ((TextView)guide.findViewById(R.id.textView)).setText("How to Play?");
         ((TextView)guide.findViewById(R.id.guide)).setText(
-        		"Each player gets the same word to draw except one player gets word similiar to the others. " +
-        		"Each player then has to guess which picture had different word. ");
-        ((TextView)guide.findViewById(R.id.note)).setText("Scores will reset if you change name or the ammount of players");
-        
-        
+        		"Each player has 30 seconds to draw a given word. When you are finished drawing, pass the device to the next player " +
+        		"All players will get the same word, except one! When everyone has finished their drawing, each player has to guess " +
+        		"which player had different word. Beware! The words are similiar to each other. Even the player who has the " +
+        		"other word doesn't know what the right word is and has to guess like all the others. ");
         return guide;
 	}
 }

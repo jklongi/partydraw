@@ -43,7 +43,7 @@ public class CorrectAnswerActivity extends Activity {
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 		
 			try {
-		        File f=new File(directory, "player" + player.getIndex() + ".jpg");
+		        File f=new File(directory, "player" + player.getIndex() + ".png");
 		        Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
 		        ImageView img = (ImageView)findViewById(R.id.correctImage);
 		        
