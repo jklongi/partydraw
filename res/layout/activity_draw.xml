@@ -98,7 +98,7 @@
 			    android:contentDescription="@string/paint"
 			    android:onClick="paintClicked"
 			    android:src="@drawable/paint"
-			    android:tag="#FF660000" />
+			    android:tag="#FF660000"/>
 			 
 			<ImageButton
 			    android:layout_width="@dimen/large_brush"
