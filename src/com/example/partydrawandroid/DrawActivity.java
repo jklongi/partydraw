@@ -32,6 +32,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 	private Player player;
 	private TextView timer;
 	private Bitmap bitmapImage;
+	private CountDownTimer countdown;
 	
 	public void paintClicked(View view) {
 		
@@ -118,7 +119,7 @@ public class DrawActivity extends Activity implements OnClickListener {
     }
 
 	private void setTimer() {
-		new CountDownTimer(30000, 1000) {
+		countdown = new CountDownTimer(30000, 1000) {
 
 		     public void onTick(long millisUntilFinished) {
 		         timer.setText("Time left: " + millisUntilFinished / 1000);
@@ -261,6 +262,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 			saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			    public void onClick(DialogInterface dialog, int which){
 			        //save drawing
+			    	countdown.cancel();
 			    	saveImage();
 			    	finish();
 			    }
@@ -282,13 +284,9 @@ public class DrawActivity extends Activity implements OnClickListener {
 		dv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 		
 		index = getIntent().getIntExtra("index", 0);
-
 		bitmapImage = dv.getDrawingCache();
-		
 		ContextWrapper cw = new ContextWrapper(getApplicationContext());
-		
 		File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-		
 		File file = new File(directory,"player" + index +".png");
 
 		FileOutputStream fos = null;
@@ -298,9 +296,8 @@ public class DrawActivity extends Activity implements OnClickListener {
 			fos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("IMAGE SAVE NOT SUCCESFUL");
 		}
-
-		System.out.println(directory.getAbsolutePath());
 		
 	}
 	

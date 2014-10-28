@@ -116,6 +116,7 @@ public class GuessPictureActivity extends Activity {
 		        currentView.setImageBitmap(b);
 		    } catch (FileNotFoundException e) {
 		        e.printStackTrace();
+		        System.out.println("IMAGE LOAD NOT SUCCESFUL");
 		    }
 		}
 		

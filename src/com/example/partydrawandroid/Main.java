@@ -30,6 +30,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	private Random random;
 	private Spinner spinner;
     private static final String[] options = {"3 players", "4 players", "5 players", "6 players"};
+    private int ids[] = {R.id.player1, R.id.player2, R.id.player3, R.id.player4, R.id.player5, R.id.player6}; 
     private int playerAmmount;
     private int request;
     private String[] wordPair;
@@ -39,8 +40,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
     private MediaPlayer mp;
     
     
-    Button start;
-    Button quit;
+    Button start, quit;
     Fragment fragment = this;
     
 	
@@ -53,9 +53,10 @@ public class Main extends Fragment implements OnItemSelectedListener {
 		pair = new WordPair();
 		random = new Random();
 		playerlist = new ArrayList<Player>();
-		
+
 		createSpinner(main);
         setVisibility();
+        
         
         start = (Button) main.findViewById(R.id.startButton);
         start.setOnClickListener(new OnClickListener() {
@@ -75,9 +76,11 @@ public class Main extends Fragment implements OnItemSelectedListener {
             }
         });
         
+        
        return main;
 	}
 	
+
 
 	private void createSpinner(View main) {
 		spinner = (Spinner)main.findViewById(R.id.spinner);
@@ -145,7 +148,6 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	}
 
 	private String[] playersToArray() {
-		int ids[] = {R.id.player1, R.id.player2, R.id.player3, R.id.player4, R.id.player5, R.id.player6}; 
 		String[] playerNames = new String[6];
 		for (int i = 0; i < playerNames.length; i++){
 			EditText player = (EditText) main.findViewById(ids[i]);	

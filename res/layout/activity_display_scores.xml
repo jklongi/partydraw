@@ -64,10 +64,9 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:gravity="bottom|center"
+        android:text="@string/tap_anywhere"
         android:textColor="#54dceb"
-        android:gravity="center|bottom"
-        android:text="@string/tap_anywhere" />
-    
+        android:textSize="15sp" />
 
 </LinearLayout>

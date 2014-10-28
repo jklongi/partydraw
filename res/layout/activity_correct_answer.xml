@@ -15,8 +15,10 @@
         android:id="@+id/correctTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textColor="#54dceb" />
+        android:gravity="center"
+        android:textColor="#54dceb"
+        android:textSize="25sp" />
+
     <ImageView
         android:id="@+id/correctImage"
 	    android:layout_weight="1"

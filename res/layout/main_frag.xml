@@ -9,7 +9,7 @@
 	android:baselineAligned="false"
 	android:orientation="horizontal"
 	android:background="@drawable/background"
-	android:paddingTop="5dp"  >
+	android:paddingTop="64dp"  >
 
 	    
         <LinearLayout 
@@ -23,18 +23,19 @@
 	        android:paddingBottom="20dp"
 	        android:paddingTop="15dp" >
 	        
-	        <LinearLayout 
+	       <LinearLayout 
 	            android:background="@drawable/custom_border"
 	            android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
-	        	android:orientation="vertical" >
+	        	android:orientation="vertical"
+	        	android:padding="32dp" >
 	
 		        <Spinner
 		            android:id="@+id/spinner"
 		            android:layout_width="fill_parent"
-		            android:layout_height="wrap_content"/>
+		            android:layout_height="wrap_content" />
+		        
 
-		
 		        <LinearLayout 
 		            android:layout_width="match_parent"
 			        android:layout_height="0dip"
