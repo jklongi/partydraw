@@ -16,22 +16,38 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#54dceb"
-        android:textSize="25sp" />
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0" />
 
     <ImageView
         android:id="@+id/correctImage"
 	    android:layout_weight="1"
 	    android:layout_width="match_parent"
 		android:layout_height="0dp"
-	    android:contentDescription="@string/description"  />
+	    android:contentDescription="@string/description"
+	    android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0"  />
+    
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="#54dceb"
+        android:textColor="@color/blue"
         android:gravity="center|bottom"
-        android:text="@string/tap_anywhere" />
+        android:text="@string/tap_anywhere"
+        android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0" />
     
 
 </LinearLayout>

@@ -66,6 +66,7 @@ public class DrawActivity extends Activity implements OnClickListener {
 		this.player = (Player) intent.getSerializableExtra("player");
 		index = intent.getIntExtra("index", 0);
 		
+		
         new AlertDialog.Builder(this)
         .setTitle("Draw")
         .setMessage(player.getName() + " are you ready to draw?")
@@ -75,6 +76,7 @@ public class DrawActivity extends Activity implements OnClickListener {
             }
          })
         .show();
+        
     }
     
     public void playerIsReady(){

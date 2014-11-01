@@ -13,15 +13,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="50sp"
-        android:textColor="#54dceb"
-        android:layout_marginTop="64dp"/>
+        android:textColor="@color/blue"
+        android:layout_marginTop="64dp"
+        android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0"/>
     
     <TextView
         android:id="@+id/guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0"/>
     
     <TextView
         android:id="@+id/note"
@@ -29,6 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:textSize="20sp"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+		android:shadowColor="#000000"
+		android:shadowDx="0.0"
+		android:shadowDy="0.0"
+		android:shadowRadius="2.0"/>
     
 </LinearLayout>

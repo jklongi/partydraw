@@ -33,7 +33,13 @@
 		        <Spinner
 		            android:id="@+id/spinner"
 		            android:layout_width="fill_parent"
-		            android:layout_height="wrap_content" />
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/spinner"
+		            android:textStyle="bold"
+					android:shadowColor="#000000"
+					android:shadowDx="0.0"
+					android:shadowDy="0.0"
+					android:shadowRadius="2.0" />
 		        
 
 		        <LinearLayout 
@@ -81,48 +87,78 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF" />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0" />
 	
 	        <EditText
 	            android:id="@+id/player2"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF" />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0" />
 	
 	        <EditText
 	            android:id="@+id/player3"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF"  />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0"  />
 	
 	        <EditText
 	            android:id="@+id/player4"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF"  />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0"  />
 	
 	        <EditText
 	            android:id="@+id/player5"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF" />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0" />
 	
 	        <EditText
 	            android:id="@+id/player6"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:hint="@string/player_name"
-	            android:textColor="#54dceb"
-	            android:textColorHint="#FFFFFF"  />
+	            android:textColor="#FFFFFF"
+	            android:textColorHint="#FFFFFF"
+	            android:textStyle="bold"
+				android:shadowColor="#000000"
+				android:shadowDx="0.0"
+				android:shadowDy="0.0"
+				android:shadowRadius="2.0"  />
         
         </LinearLayout>
 
