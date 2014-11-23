@@ -13,8 +13,6 @@
     <string name="lrg">Large</string>
     <string name="title_activity_main_activity">MainActivity</string>
     <string name="title_activity_main_menu">MainMenu</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="player_ammount">How many players?</string>
     <string name="play_game">Play</string>
     <string name="player_name">Player Name</string>
     <string name="title_activity_prepare">PrepareActivity</string>
@@ -30,7 +28,7 @@
     <string name="displayScore">Player scores:</string>
     <string name="quit_game">Quit</string>
     <string name="new_img">New</string>
-    <string name="tap_anywhere">Tap Anywhere To Continue</string>
-    
+    <string name="tap_anywhere">Tap Here To Continue</string>
+    <string name="title_activity_ad_view">AdView</string>
 
 </resources>

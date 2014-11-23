@@ -44,7 +44,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="fill_parent"
 		    android:contentDescription="@string/save"
-		    android:src="@drawable/ic_action_accept"
+		    android:src="@drawable/done"
 		    android:layout_alignParentRight="true" />
         
 
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="25sp"
+            android:textSize="@dimen/text_size"
             android:textColor="@color/blue"
             android:textStyle="bold"
 		    android:shadowColor="#000000"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:gravity="left|center"
             android:textColor="#FF4444"
-            android:textSize="25sp"
+            android:textSize="@dimen/text_size"
             android:textStyle="bold"
             android:shadowColor="#000000"
 		    android:shadowDx="0.0"
@@ -76,7 +76,7 @@
         
 	</RelativeLayout>
 	
-    <com.example.partydrawandroid.DrawView
+    <com.party.partydrawandroid.DrawView
 	    android:id="@+id/drawing"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dp"

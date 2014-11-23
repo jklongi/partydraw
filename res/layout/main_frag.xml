@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout 
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main"
-    android:layout_weight="1"
 	android:baselineAligned="false"
-	android:orientation="horizontal"
-	android:background="@drawable/background"
-	android:paddingTop="64dp"  >
-
-	    
+	android:orientation="vertical"
+	android:background="@drawable/background"  >
+	
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    tools:context=".Main"
+	    android:layout_weight="1"
+		android:baselineAligned="false"
+		android:orientation="horizontal"
+		android:paddingTop="64dp"  >
+    
         <LinearLayout 
 	        android:layout_width="fill_parent"
 	        android:layout_height="match_parent"
@@ -23,12 +30,13 @@
 	        android:paddingBottom="10dp"
 	        android:paddingTop="10dp" >
 	        
+	        
 	       <LinearLayout 
 	            android:background="@drawable/custom_border"
 	            android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:orientation="vertical"
-	        	android:padding="32dp" >
+	        	android:padding="@dimen/border_padding" >
 	
 		        <Spinner
 		            android:id="@+id/spinner"
@@ -52,20 +60,19 @@
 			        <Button
 						android:id="@+id/startButton"
 						android:textColor="#000000"
-						android:textSize="25sp"
+						android:textSize="@dimen/button_text_size"
 						android:text="@string/play_game"
 						android:layout_width="fill_parent"
-						android:layout_height="60dp"
-						android:background="@drawable/btn"
-						/>
+						android:layout_height="@dimen/button_height"
+						android:background="@drawable/btn" />
 			        
 			        <Button
 						android:id="@+id/quitButton"
 						android:textColor="#000000"
-						android:textSize="25sp"
+						android:textSize="@dimen/button_text_size"
 						android:text="@string/quit_game"
 						android:layout_width="fill_parent"
-						android:layout_height="60dp"
+						android:layout_height="@dimen/button_height"
 						android:background="@drawable/btn_danger"
 						android:layout_marginTop="16dp"/>
 
@@ -93,7 +100,8 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0" />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size" />
 	
 	        <EditText
 	            android:id="@+id/player2"
@@ -106,7 +114,8 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0" />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size" />
 	
 	        <EditText
 	            android:id="@+id/player3"
@@ -119,7 +128,8 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0"  />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size"  />
 	
 	        <EditText
 	            android:id="@+id/player4"
@@ -132,7 +142,8 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0"  />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size"  />
 	
 	        <EditText
 	            android:id="@+id/player5"
@@ -145,7 +156,8 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0" />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size" />
 	
 	        <EditText
 	            android:id="@+id/player6"
@@ -158,8 +170,18 @@
 				android:shadowColor="#000000"
 				android:shadowDx="0.0"
 				android:shadowDy="0.0"
-				android:shadowRadius="2.0"  />
+				android:shadowRadius="2.0"
+				android:textSize="@dimen/edit_text_size"  />
+	        
         
         </LinearLayout>
-
+        
+		
+	</LinearLayout>
+	
+		<com.google.android.gms.ads.AdView android:id="@+id/adView"
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         ads:adSize="BANNER"
+                         ads:adUnitId="ca-app-pub-8829031749707266/8842390835"/>
 </LinearLayout>

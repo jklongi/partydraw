@@ -11,5 +11,10 @@
 	<integer name="medium_size">20</integer>
 	<dimen name="large_brush">30dp</dimen>
 	<integer name="large_size">30</integer>
+	<dimen name="button_text_size">10sp</dimen>
+	<dimen name="edit_text_size">10sp</dimen>
+   	<dimen name="button_height">20dp</dimen>
+   	<dimen name="border_padding">8dp</dimen>
+   	<dimen name="text_size">10sp</dimen>
 	
 </resources>

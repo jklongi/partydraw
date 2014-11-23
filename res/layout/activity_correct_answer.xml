@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,9 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.partydrawandroid.CorrectAnswerActivity"
-    android:background="@drawable/background"
-    android:onClick="finished" >
+    tools:context="com.party.partydrawandroid.CorrectAnswerActivity"
+    android:background="@drawable/background" >
 
     <TextView
         android:id="@+id/correctTextView"
@@ -23,23 +23,123 @@
 		android:shadowDx="0.0"
 		android:shadowDy="0.0"
 		android:shadowRadius="2.0" />
-
-    <ImageView
-        android:id="@+id/correctImage"
+    
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
 	    android:layout_weight="1"
-	    android:layout_width="match_parent"
-		android:layout_height="0dp"
-	    android:contentDescription="@string/description"
-	    android:textStyle="bold"
-		android:shadowColor="#000000"
-		android:shadowDx="0.0"
-		android:shadowDy="0.0"
-		android:shadowRadius="2.0"  />
+	    android:baselineAligned="false"
+	    android:orientation="horizontal" >
+	
+	    <LinearLayout
+	        android:id="@+id/correctView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:padding="2dp"
+	        tools:ignore="NestedWeights" >
+	
+	        <TextView
+	            android:id="@+id/correctText1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold" />
+	        
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:id="@+id/correctView3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:padding="2dp"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/correctText3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:id="@+id/correctView5"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:padding="2dp"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/correctText5"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold" />
+	    </LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    android:baselineAligned="false"
+	    android:orientation="horizontal"
+	    tools:ignore="NestedWeights" >
+	
+	    <LinearLayout
+	        android:id="@+id/correctView2"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:padding="2dp"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/correctText2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:id="@+id/correctView4"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:padding="2dp"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/correctText4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold" />
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:id="@+id/correctView6"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:padding="2dp"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/correctText6"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold"/>
+	    </LinearLayout>
+	    
+	</LinearLayout>
+    
     
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_size"
         android:textColor="@color/blue"
         android:gravity="center|bottom"
         android:text="@string/tap_anywhere"
@@ -47,7 +147,11 @@
 		android:shadowColor="#000000"
 		android:shadowDx="0.0"
 		android:shadowDy="0.0"
-		android:shadowRadius="2.0" />
+		android:shadowRadius="2.0"
+		android:onClick="finished"
+		android:clickable="true" />
+    
+
     
 
 </LinearLayout>

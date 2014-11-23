@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.partydrawandroid.GuessPictureActivity"
+    tools:context="com.party.partydrawandroid.GuessPictureActivity"
     android:layout_height="match_parent" 
 	android:layout_width="match_parent"
 	android:orientation="vertical"
@@ -17,66 +17,45 @@
 	
 	    <LinearLayout
 	        android:id="@+id/layoutView1"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:orientation="vertical"
 	        android:padding="2dp"
-	        tools:ignore="NestedWeights" >
+	        tools:ignore="NestedWeights"
+	        android:onClick="guessPicture1" >
 	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView1"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture1"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+
 	    </LinearLayout>
 	
-	    <LinearLayout
+	   <LinearLayout
 	        android:id="@+id/layoutView3"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:padding="2dp"
-	        android:orientation="vertical" >
+	        android:orientation="vertical"
+	        android:onClick="guessPicture3" >
 	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView3"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture3"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+
 	    </LinearLayout>
 	    
-	    <LinearLayout
+	   <LinearLayout
 	        android:id="@+id/layoutView5"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:padding="2dp"
-	        android:orientation="vertical" >
+	        android:orientation="vertical"
+	        android:onClick="guessPicture5" >
 	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView5"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture5"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+
 	    </LinearLayout>
 	</LinearLayout>
 	
 	<LinearLayout
 	    android:layout_width="fill_parent"
-	    android:layout_height="match_parent"
+	    android:layout_height="fill_parent"
 	    android:layout_weight="1"
 	    android:baselineAligned="false"
 	    android:orientation="horizontal"
@@ -84,61 +63,37 @@
 	
 	    <LinearLayout
 	        android:id="@+id/layoutView2"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:padding="2dp"
-	        android:orientation="vertical" >
+	        android:orientation="vertical"
+	        android:onClick="guessPicture2" >
 	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView2"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture2"
-	            android:padding="2dp"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+
 	    </LinearLayout>
 	
 	    <LinearLayout
 	        android:id="@+id/layoutView4"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:padding="2dp"
-	        android:orientation="vertical" >
-	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView4"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture5"
-	            android:padding="2dp"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+	        android:orientation="vertical"
+	        android:onClick="guessPicture5" >
+
 	    </LinearLayout>
 	    
 	    <LinearLayout
 	        android:id="@+id/layoutView6"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
 	        android:padding="2dp"
-	        android:orientation="vertical" >
+	        android:orientation="vertical"
+	        android:onClick="guessPicture6" >
 	
-	        <ImageButton
-	            style="?android:borderlessButtonStyle"
-	            android:id="@+id/imageView6"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:contentDescription="@string/description"
-	            android:onClick="guessPicture6"
-	            android:scaleType="centerCrop"
-	            android:background="#CCFFFFFF" />
+
 	    </LinearLayout>
 	    
 	</LinearLayout>

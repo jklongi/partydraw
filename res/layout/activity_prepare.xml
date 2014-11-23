@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.partydrawandroid.PrepareActivity" >
+    tools:context="com.party.partydrawandroid.PrepareActivity" >
 
     <TextView android:id ="@+id/player_name"
         android:layout_width="wrap_content"

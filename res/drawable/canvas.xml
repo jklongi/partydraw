@@ -12,20 +12,20 @@
     
 
     <stroke
-        android:width="3dp"
+        android:width="2dp"
         android:color="#000000" >
     </stroke>
 
  	
     <!-- If you want to add some padding -->
-    <!--
+<!--  
     <padding
         android:left="40dp"
         android:top="40dp"
         android:right="40dp"
         android:bottom="40dp"    >
     </padding>
- 	-->
+-->
     <!-- Here is the corner radius -->
     <corners
         android:radius="10dp"   >
