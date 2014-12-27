@@ -8,8 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.party.partydrawandroid.DisplayScoresActivity"
-    android:onClick="finished" >
+    tools:context="com.party.partydrawandroid.DisplayScoresActivity" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,10 +102,12 @@
         android:text="@string/tap_anywhere"
         android:textColor="@color/blue"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="25sp"
 		android:shadowColor="#000000"
 		android:shadowDx="0.0"
 		android:shadowDy="0.0"
-		android:shadowRadius="4.0" />
+		android:shadowRadius="4.0"
+		android:onClick="finished"
+		android:clickable="true" />
 
 </LinearLayout>

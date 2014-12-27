@@ -17,7 +17,7 @@ public class Guide extends Fragment {
         		"Each player has 30 seconds to draw a given word. One random player will be given slightly different word. " +
         		"When you are done drawing, click the ✔ button in the upper right corner or wait for the time to run out " +
         		"and then pass the device to the next player. When everyone has finished their drawing, starting from the first " +
-        		"player, each player has to guess which picture was drawn from different word. ");
+        		"player, each player has to guess which picture was drawn from the different word. ");
         return guide;
 	}
 }

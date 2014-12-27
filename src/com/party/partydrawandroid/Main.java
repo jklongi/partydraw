@@ -146,6 +146,7 @@ public class Main extends Fragment implements OnItemSelectedListener {
 		fragment.startActivityForResult(intent, request);
 		
 	}
+	
 
 
 	private void playerNamesToArray(ArrayList<Player> playerlist, String[] playerNames) {
@@ -190,9 +191,10 @@ public class Main extends Fragment implements OnItemSelectedListener {
 	    		startGuessPictureActivity();
 	    	} else if (request == playerAmmount * 2){
 	    		startCorrectAnswerActivity();
-	    	} else {
+	    	} else if(request == playerAmmount * 2 + 1){
 	    		startDisplayScoresAcitivty();
-	    	}
+	    	} 
+	    	
 	    }
 	}
 

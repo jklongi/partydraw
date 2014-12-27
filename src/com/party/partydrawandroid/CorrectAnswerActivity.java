@@ -68,8 +68,8 @@ public class CorrectAnswerActivity extends Activity {
 		        
 		        if(i == player.getIndex()){
 		        	text.setText(correct + " by " + playernames[i]);
-		        	text.setTextSize(20);
-		        	text.setTextColor(Color.parseColor("#99CC00"));
+		        	text.setTextSize(25);
+		        	text.setTextColor(Color.parseColor("#FF4444"));
 		        } else {
 		        	text.setText(incorrect + " by " + playernames[i]);
 		        }

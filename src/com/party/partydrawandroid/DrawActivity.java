@@ -78,6 +78,7 @@ public class DrawActivity extends Activity implements OnClickListener {
          })
         .show();
 		dialog.setCanceledOnTouchOutside(false);
+		dialog.setCancelable(false);
         
     }
     

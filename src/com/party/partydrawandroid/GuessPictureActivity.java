@@ -77,6 +77,7 @@ public class GuessPictureActivity extends Activity {
          })
         .show();
 		dialog.setCanceledOnTouchOutside(false);
+		dialog.setCancelable(false);
 	}
 
 
